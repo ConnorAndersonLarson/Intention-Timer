@@ -1,1 +1,43 @@
+body {
+  background-color: #2B2733;
+  display:flex;
+  flex-direction:column;
+  font-family: 'Montserrat', sans-serif;
+}
 
+h2 {
+  color: #CBC9CF;
+}
+
+header {
+  background-color: #46424D;
+  color: #FFF;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  display:flex;
+  justify-content: space-around;
+}
+
+
+.new-activity {
+  width: 65%;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+.past-activities {
+  width: 35%;
+  border-left: #46424D solid 5px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+.form {
+  background-color: #46424D;
+  height: fill;
+  width: auto;
+}
