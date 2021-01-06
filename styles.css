@@ -109,6 +109,12 @@ div {
 
 .start-activity {
   align-self: flex-end;
+  width: 30%;
+  height: 110px;
+  border-radius: 3px;
+  border: none;
+  color: #2B2733;
+  font-size: 15px;
 }
 
 p {
