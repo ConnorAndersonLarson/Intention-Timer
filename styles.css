@@ -71,7 +71,7 @@ div {
 
   img {
     padding-top: 7px;
-    height: 35px;
+    height: 23px;
     width: auto;
   }
 
@@ -81,10 +81,10 @@ div {
     justify-content: space-around;
     align-items: center;
     background: transparent;
-    font-size: 180%;
+    font-size: 110%;
     color: #CBC9CF;
-    height: 90px;
-    width: 195px;
+    height: 67px;
+    width: 155px;
     border: 2px solid #FFF;
     border-radius: 5px;
     padding-bottom: 7px;
@@ -121,6 +121,7 @@ p {
   display: flex;
   justify-content: center;
   color: #CBC9CF;
+  margin: 10px;
 }
 
 .accomplish, .category {
@@ -140,7 +141,13 @@ p {
 }
 
 .category {
-  font-size: 120%
+  font-size: 96.5%;
+  transform: scaleY(1.1);
+}
+
+.past-activities > section {
+  margin: 40px;
+  transform: scaleX(.85);
 }
 /* Main background: #2B2733
 Text on main background: #CBC9CF
