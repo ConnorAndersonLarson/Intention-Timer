@@ -69,14 +69,25 @@ div {
   width: 100%;
   }
 
+  img {
+    padding-top: 7px;
+    height: 35px;
+    width: auto;
+  }
+
   .button-box > button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     background: transparent;
-    font-size: 120%;
+    font-size: 180%;
     color: #CBC9CF;
     height: 90px;
-    width: 185px;
+    width: 195px;
     border: 2px solid #FFF;
     border-radius: 5px;
+    padding-bottom: 7px;
   }
 
 .time-box {
