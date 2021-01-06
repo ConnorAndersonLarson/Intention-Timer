@@ -14,22 +14,22 @@
       <section class="new-activity">
         <h2>New Activity</h2>
         <section class="form">
-          <label>Select a category:</label>
+          <label class="category"><h3>Select a category:</h3></label>
           <div class="button-box">
             <button>Study</button>
             <button>Meditate</button>
             <button>Exercise</button>
           </div>
-          <label>What would you like to accomplish during this time?</label>
-          <input type="text">
+          <label class="accomplish">What would you like to accomplish during this time?</label>
+          <input class="user-accomplish" type="text">
           <div class="time-box">
             <div class="minute-box">
               <label>Minutes</label>
-              <input type="text">
+              <input class="user-minutes" type="text">
             </div>
             <div class="seconds-box">
               <label>Seconds</label>
-              <input type="text">
+              <input class="user-seconds" type="text">
             </div>
           </div>
           <button class="start-activity">Start Activity</button>
@@ -37,6 +37,10 @@
       </section>
       <section class="past-activities">
         <h2>Past Activities</h2>
+        <section>
+          <p>You haven't logged any activities yet</p>
+          <p>Complete the form to the left to get started!</p>
+        </section>
       </section>
     </div>
   </body>
