@@ -17,6 +17,11 @@ h2 {
   transform: scaleY(1.1);
 }
 
+h4 {
+  margin: 10px;
+  color: #EFB7EC;
+}
+
 header {
   background-color: #46424D;
   display: flex;
@@ -67,6 +72,7 @@ div {
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+  height: fit-content;
 }
 
 img {
@@ -114,6 +120,11 @@ border: 2px solid #FFF;
 
 }
 
+.error {
+  display:flex;
+  margin-bottom: 30px;
+}
+
 .minute-box, .seconds-box {
   color: #FFF;
   height: 20%;
@@ -131,6 +142,7 @@ border: 2px solid #FFF;
   border: none;
   color: #2B2733;
   font-size: 15px;
+  outline: none;
 }
 
 p {
@@ -183,6 +195,10 @@ p {
 
 .hidden {
   display: none;
+}
+
+.visibility {
+  visibility:hidden;
 }
 /* Main background: #2B2733
 Text on main background: #CBC9CF

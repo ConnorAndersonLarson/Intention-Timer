@@ -13,23 +13,39 @@
     <div>
       <section class="new-activity">
         <h2>New Activity</h2>
-        <section class="form">
+        <section id="activityForm" class="form">
           <label class="category"><h3>Select a category:</h3></label>
           <div class="button-box">
             <button id="study" class="study"><img class="study-active hidden" src="./assets/study-active.svg"><img class="study-image"src="./assets/study.svg">Study</button>
             <button id="meditate" class="meditate"><img class="meditate-active hidden" src="./assets/meditate-active.svg"><img class="meditate-image" src="./assets/meditate.svg">Meditate</button>
             <button id="exercise" class="exercise"><img class="exercise-active hidden" src="./assets/exercise-active.svg"><img class="exercise-image" src="./assets/exercise.svg">Exercise</button>
           </div>
+          <section class="error visibility" id="buttonError">
+            <img class="error-image" src="./assets/warning.svg">
+            <h4>Please select a category.</h4>
+          </section>
           <label class="accomplish">What would you like to accomplish during this time?</label>
-          <input class="user-accomplish" type="text">
+          <input id="accomplish" class="user-accomplish" type="text">
+          <section class="error visibility" id="accomplishError">
+            <img class="error-image" src="./assets/warning.svg">
+            <h4>A description is required.</h4>
+          </section>
           <div class="time-box">
             <div class="minute-box">
               <label>Minutes</label>
               <input id="minutes" class="user-minutes" type="text">
+              <section class="error visibility" id="minutesError">
+                <img class="error-image" src="./assets/warning.svg">
+                <h4>Please input a numerical value.</h4>
+              </section>
             </div>
             <div class="seconds-box">
               <label>Seconds</label>
               <input id="seconds" class="user-seconds" type="text">
+              <section class="error visibility" id="secondsError">
+                <img class="error-image" src="./assets/warning.svg">
+                <h4>Please input a numerical value.</h4>
+              </section>
             </div>
           </div>
           <button id="start" class="start-activity">START ACTIVITY</button>
