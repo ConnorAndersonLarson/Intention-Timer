@@ -12,6 +12,11 @@ buttonMeditate.addEventListener("click", changeColorPurple);
 buttonStudy.addEventListener("click", changeColorGreen);
 buttonExercise.addEventListener("click", changeColorOrange);
 
+
+//Need to make buttons only light up one at a time.
+//Figure out border/text color problem.
+
+
 function changeColorOrange(event) {
   // if (event.target.className === "exercise") {
     buttonExercise.classList.toggle('orange');
