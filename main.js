@@ -45,6 +45,8 @@ function changeColorPurple() {
     buttonMeditate.classList.toggle('purple');
     imageMeditateActive.classList.toggle('hidden');
     imageMeditate.classList.toggle('hidden');
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
   // }
 }
 
