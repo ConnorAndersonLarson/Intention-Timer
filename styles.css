@@ -76,18 +76,34 @@ img {
 }
 
 .button-box > button {
+  /* color: #CBC9CF; */
+  /* border: 2px solid #FFF; */
+  outline: none;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background: transparent;
   font-size: 110%;
-  color: #CBC9CF;
   height: 67px;
   width: 155px;
-  border: 2px solid #FFF;
   border-radius: 5px;
   padding-bottom: 7px;
+}
+
+.study {
+color: #CBC9CF;
+border: 2px solid #FFF;
+}
+
+.exercise {
+  color: #CBC9CF;
+  border: 2px solid #FFF;
+}
+
+.meditate {
+  color: #CBC9CF;
+  border: 2px solid #FFF;
 }
 
 .time-box {
@@ -152,17 +168,17 @@ p {
 
 .green {
   color: #B3FD78;
-  border-color: #B3FD78;
+  border: 2px solid #B3FD78;
 }
 
 .purple {
   color: #C278FD;
-  border-color: #C278FD;
+  border: 2px solid #C278FD;
 }
 
 .orange {
   color: #FD8078;
-  border-color: #FD8078;
+  border: 2px solid #FD8078;
 }
 
 .hidden {
