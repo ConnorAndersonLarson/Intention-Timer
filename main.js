@@ -8,29 +8,52 @@ var imageStudyActive = document.querySelector(".study-active");
 var imageMeditateActive = document.querySelector(".meditate-active");
 var imageExerciseActive = document.querySelector(".exercise-active");
 
-buttonMeditate.addEventListener("click", changeColor);
-buttonStudy.addEventListener("click", changeColor);
-buttonExercise.addEventListener("click", changeColor);
+buttonMeditate.addEventListener("click", changeColorPurple);
+buttonStudy.addEventListener("click", changeColorGreen);
+buttonExercise.addEventListener("click", changeColorOrange);
 
-// function changeColorPurple() {
-//   buttonMeditate.classList.toggle('green');
-//   imageMeditateActive.classList.toggle('hidden');
-//   imageMeditate.classList.toggle('hidden');
-//   console.log("pants")
-// }
+function changeColorOrange(event) {
+  // if (event.target.className === "exercise") {
+    buttonExercise.classList.toggle('orange');
+    imageExercise.classList.toggle('hidden');
+    imageExerciseActive.classList.toggle('hidden');
+  // }
+}
 
-function changeColor() {
-  if (event.target.className === ".study") {
-    buttonStudy.classList.toggle(".green");
-    imageStudy.classList.toggle("hidden");
-    imageStudyActive.classList.toggle("hidden");
-  } else if (event.target.className === ".meditate"); {
-    buttonMeditate.classList.toggle(".purple");
+function changeColorGreen() {
+  // if (event.target.className === "study") {
+    buttonStudy.classList.toggle('green');
+    imageStudy.classList.toggle('hidden');
+    imageStudyActive.classList.toggle('hidden');
+  // }
+}
+
+function changeColorPurple(event) {
+  // if (event.target.className === "meditate") {
+    buttonMeditate.classList.toggle('purple');
     imageMeditateActive.classList.toggle('hidden');
     imageMeditate.classList.toggle('hidden');
-  } else if (event.target.className === ".exercise") {
-    buttonExercise.classList.toggle(".orange");
-    imageExercise.classList.toggle("hidden");
-    imageExerciseActive.classList.toggle("hidden");
-  }
+    console.log("pants")
+  // }
 }
+
+
+
+
+
+// function changeColor(event) {
+//   if (event.target.className === "study") {
+//     buttonStudy.classList.toggle("green");
+//     imageStudy.classList.toggle("hidden");
+//     imageStudyActive.classList.toggle("hidden");
+//   } else if (event.target.className === "meditate") {
+//     buttonMeditate.classList.toggle("purple");
+//     imageMeditateActive.classList.toggle('hidden');
+//     imageMeditate.classList.toggle('hidden');
+//   } else if (event.target.className === "exercise") {
+//     buttonExercise.classList.toggle("orange");
+//     imageExercise.classList.toggle("hidden");
+//     imageExerciseActive.classList.toggle("hidden");
+//   } else {
+//   }
+// }
