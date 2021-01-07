@@ -9,15 +9,15 @@ class Activity {
   }
 
   countdown() {
-
+    //use minutes and seconds attributes to set starting point of timer
   }
 
   markComplete() {
-
+    this.completed = true;
   }
 
   saveToStorage() {
-    
+
   }
 
 }
