@@ -131,6 +131,7 @@ border: 2px solid #FFF;
   border: none;
   color: #2B2733;
   font-size: 15px;
+  outline: none;
 }
 
 p {

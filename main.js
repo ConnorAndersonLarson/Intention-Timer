@@ -7,47 +7,54 @@ var imageExercise = document.querySelector('.exercise-image');
 var imageStudyActive = document.querySelector('.study-active');
 var imageMeditateActive = document.querySelector('.meditate-active');
 var imageExerciseActive = document.querySelector('.exercise-active');
+var userAccomplish = document.querySelector('#accomplish')
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
-var buttonStart = document.querySelector('#start')
-
+var buttonStart = document.querySelector('#start');
+var form = document.querySelector('#activityForm');
 buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 
+
+var button = '';
+
 function showActivity() {
-  currentActivity = new Activity
+form.classList.add('hidden');
+var userCategory = button;
+var userDescription = userAccomplish.value;
+var userMinutes = minutes.value;
+var userSeconds = seconds.value;
+var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
+console.log(currentActivity)
 }
 
 function changeColorOrange() {
-  // if (event.target.className === "exercise") {
     buttonExercise.classList.toggle('orange');
     imageExercise.classList.toggle('hidden');
     imageExerciseActive.classList.toggle('hidden');
-    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
-    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple')
-  // }
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
+    button = 'Meditate';
 }
 
 function changeColorGreen() {
-  // if (event.target.className === "study") {
     buttonStudy.classList.toggle('green');
     imageStudy.classList.toggle('hidden');
     imageStudyActive.classList.toggle('hidden');
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple')
-  // }
+    button = 'Study';
 }
 
 function changeColorPurple() {
-  // if (event.target.className === "meditate") {
     buttonMeditate.classList.toggle('purple');
     imageMeditateActive.classList.toggle('hidden');
     imageMeditate.classList.toggle('hidden');
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
-  // }
+    button = 'Exercise';
 }
 
 function unselectButtons(selector1, selector2, border, color) {
@@ -61,23 +68,3 @@ function unselectButtons(selector1, selector2, border, color) {
     border.classList.toggle(color);
   }
 }
-
-
-
-
-// function changeColor(event) {
-//   if (event.target.className === "study") {
-//     buttonStudy.classList.toggle("green");
-//     imageStudy.classList.toggle("hidden");
-//     imageStudyActive.classList.toggle("hidden");
-//   } else if (event.target.className === "meditate") {
-//     buttonMeditate.classList.toggle("purple");
-//     imageMeditateActive.classList.toggle('hidden');
-//     imageMeditate.classList.toggle('hidden');
-//   } else if (event.target.className === "exercise") {
-//     buttonExercise.classList.toggle("orange");
-//     imageExercise.classList.toggle("hidden");
-//     imageExerciseActive.classList.toggle("hidden");
-//   } else {
-//   }
-// }
