@@ -150,6 +150,24 @@ p {
   transform: scaleX(.85);
 }
 
+.green {
+  color: #B3FD78;
+  border-color: #B3FD78;
+}
+
+.purple {
+  color: #C278FD;
+  border-color: #C278FD;
+}
+
+.orange {
+  color: #FD8078;
+  border-color: #FD8078;
+}
+
+.hidden {
+  display: none;
+}
 /* Main background: #2B2733
 Text on main background: #CBC9CF
 Header, cards: #46424D

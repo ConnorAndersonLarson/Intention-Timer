@@ -22,4 +22,4 @@ class Activity {
 
 }
 
-module.exports = Activity;
+// module.exports = Activity;
