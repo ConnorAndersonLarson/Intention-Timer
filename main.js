@@ -9,7 +9,9 @@ var imageMeditateActive = document.querySelector('.meditate-active');
 var imageExerciseActive = document.querySelector('.exercise-active');
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
-var buttonStart = document.querySelector('#start')
+var buttonStart = document.querySelector('#start');
+
+var userAccomplish = document.querySelector('#accomplish')
 
 buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
@@ -61,6 +63,26 @@ function unselectButtons(selector1, selector2, border, color) {
     border.classList.toggle(color);
   }
 }
+
+// use event on start activity button to capsure input
+// use parseInt() to convert from string to number
+// do not accept e in the number inputs
+
+function checkInputs() {
+  if (!userAccomplish) {
+    show(accomplishError)
+    return false;
+  }
+  if (!minutes.value) {
+    show(minutesError);
+    return false;
+  }
+  if (!seconds.value) {
+    show(secondsError);
+    return false;
+  }
+}
+
 
 
 
