@@ -22,6 +22,8 @@ function changeColorOrange(event) {
     buttonExercise.classList.toggle('orange');
     imageExercise.classList.toggle('hidden');
     imageExerciseActive.classList.toggle('hidden');
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple')
   // }
 }
 
@@ -30,6 +32,8 @@ function changeColorGreen() {
     buttonStudy.classList.toggle('green');
     imageStudy.classList.toggle('hidden');
     imageStudyActive.classList.toggle('hidden');
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple')
   // }
 }
 
@@ -38,10 +42,23 @@ function changeColorPurple(event) {
     buttonMeditate.classList.toggle('purple');
     imageMeditateActive.classList.toggle('hidden');
     imageMeditate.classList.toggle('hidden');
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
     console.log("pants")
   // }
 }
 
+function unselectButtons(selector1, selector2, border, color) {
+  if (selector1.classList.contains('hidden')) {
+    selector1.classList.remove('hidden');
+  }
+  if (!selector2.classList.contains('hidden')) {
+    selector2.classList.toggle('hidden');
+  }
+  if (border.classList.contains(color)) {
+    border.classList.toggle(color);
+  }
+}
 
 
 
