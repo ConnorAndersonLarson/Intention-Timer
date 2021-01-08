@@ -25,13 +25,23 @@ buttonStart.addEventListener('click', showActivity);
 var button = '';
 
 function showActivity() {
-form.classList.add('hidden');
 var userCategory = button;
 var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
-var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
-console.log(currentActivity)
+  if(userCategory && userDescription && userMinutes && userSeconds){
+    form.classList.add('hidden');
+    var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
+    console.log(currentActivity)
+  }else{
+    buttonError()
+  }
+}
+
+function buttonError() {
+  buttonStart.classList.toggle('backgroundColor')
+  setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 600);
+  setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 2000);
 }
 
 function changeColorOrange() {
@@ -92,9 +102,32 @@ function checkInputs() {
   }
 }
 
+var minError = document.querySelector('#minutesError')
+minutes.addEventListener('blur', minuteError)
+var secError = document.querySelector('#secondsError')
+
+function minuteError(){
+  errorCheck(minutes, minError)
+}
 
 
 
+function errorCheck(inputField, errorMessage) {
+  if (!parseInt(inputField.value)) {
+    errorMessage.classList.remove('visibility');
+  } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
+    errorMessage.classList.toggle('visibility');
+  }
+
+}
+
+
+
+function secondsCap(inputField, errorMessage) {
+  if (parseInt(inputField.value) > 60){
+    errorMessage.classList.remove('visibility');
+  }
+}
 
 // function changeColor(event) {
 //   if (event.target.className === "study") {
