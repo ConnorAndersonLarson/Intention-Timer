@@ -233,13 +233,16 @@ p {
 }
 
 .accomp {
-font-size: 100%;
+font-size: 125%;
 font-weight:bolder;
+transform: scaleY(1.1);
 }
 
 .min, .sec {
   font-size: 500%;
-  font-family: 'Montserrat', sans-serif;
+  color: #FFF;
+  font-family: 'Arial';
+  font-weight: 800;
 }
 
 /* Main background: #2B2733
