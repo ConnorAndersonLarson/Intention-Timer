@@ -11,10 +11,10 @@ var userAccomplish = document.querySelector('#accomplish')
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
-
 var userAccomplish = document.querySelector('#accomplish')
-
 var form = document.querySelector('#activityForm');
+var clockForm = document.querySelector('#clockForm');
+
 
 buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
@@ -24,6 +24,15 @@ buttonStart.addEventListener('click', showActivity);
 
 var button = '';
 
+function clock(accomp, min, sec) {
+  clockForm.innerHTML = `
+  <div class="timer">
+    <p class="accomp">${accomp}</p>
+    <p class="min">${min}:${sec}</p>
+    <p class="sec"></p>
+  </div>
+  `;
+}
 function showActivity() {
 form.classList.add('hidden');
 var userCategory = button;
@@ -31,7 +40,7 @@ var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
 var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
-console.log(currentActivity)
+clock(userDescription, userMinutes, userSeconds);
 }
 
 function changeColorOrange() {
@@ -73,9 +82,6 @@ function unselectButtons(selector1, selector2, border, color) {
   }
 }
 
-// use event on start activity button to capsure input
-// use parseInt() to convert from string to number
-// do not accept e in the number inputs
 
 function checkInputs() {
   if (!userAccomplish) {
@@ -91,24 +97,3 @@ function checkInputs() {
     return false;
   }
 }
-
-
-
-
-
-// function changeColor(event) {
-//   if (event.target.className === "study") {
-//     buttonStudy.classList.toggle("green");
-//     imageStudy.classList.toggle("hidden");
-//     imageStudyActive.classList.toggle("hidden");
-//   } else if (event.target.className === "meditate") {
-//     buttonMeditate.classList.toggle("purple");
-//     imageMeditateActive.classList.toggle('hidden');
-//     imageMeditate.classList.toggle('hidden');
-//   } else if (event.target.className === "exercise") {
-//     buttonExercise.classList.toggle("orange");
-//     imageExercise.classList.toggle("hidden");
-//     imageExerciseActive.classList.toggle("hidden");
-//   } else {
-//   }
-// }

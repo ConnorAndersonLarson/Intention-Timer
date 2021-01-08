@@ -200,6 +200,33 @@ p {
 .visibility {
   visibility:hidden;
 }
+
+/* CLOCK STUFF */
+
+/* Sets the containers height and width */
+.clock-visual {
+  display: flex;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #46424D;
+  position: relative;
+  height: 600px;
+  width: 100%;
+}
+
+.accomp {
+font-size: 100%;
+font-weight:bolder;
+}
+
+.min, .sec {
+  font-size: 500%;
+}
+
 /* Main background: #2B2733
 Text on main background: #CBC9CF
 Header, cards: #46424D
