@@ -48,8 +48,8 @@ var userSeconds = seconds.value;
 
 function buttonError() {
   buttonStart.classList.toggle('backgroundColor')
-  setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 600);
-  setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 2000);
+  setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 150);
+  setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 1700);
 var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
 clock(userDescription, userMinutes, userSeconds);
 }

@@ -140,6 +140,7 @@ border: 2px solid #FFF;
   height: 110px;
   border-radius: 3px;
   border: none;
+  background-color: #CBC9CF;
   color: #2B2733;
   font-size: 15px;
   outline: none;
@@ -194,15 +195,15 @@ p {
 }
 
 .backgroundColor{
-  background-color: #db4d4b; 
+  background-color: #db4d4b;
 }
 
 .activityError{
-  background-color: #FFF;
-  transition: background-color 1000ms linear;
+  background-color: #CBC9CF;
+  transition: background-color 1500ms linear;
 }
 
-.activityError:hover {
+.activityError:active {
   background-color: #db4d4b;
 }
 
