@@ -95,7 +95,7 @@ function secondsError() {
 }
 
 function accomplishError() {
-  errorCheck(userAccomplish, accompError);
+  accomplishErrorCheck(userAccomplish, accompError);
 }
 
 function errorCheck(inputField, errorMessage) {
@@ -103,8 +103,14 @@ function errorCheck(inputField, errorMessage) {
     errorMessage.classList.remove('visibility');
   } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
     errorMessage.classList.toggle('visibility');
-  } else if (accomplishError = "") {
-    errorMessage.classList.toggle('visibility');
+  }
+}
+
+function accomplishErrorCheck(inputField, errorMessage) {
+  if (inputField.value === '') {
+    errorMessage.classList.remove('visibility');
+  } else if (inputField.value !== '') {
+    errorMessage.classList.add('visibility');
   }
 }
 
