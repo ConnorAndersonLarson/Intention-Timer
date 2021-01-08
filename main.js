@@ -25,7 +25,9 @@ buttonStart.addEventListener('click', showActivity);
 var button = '';
 
 function showActivity() {
+checkInputs();
 form.classList.add('hidden');
+var inputValues = checkImputs;
 var userCategory = button;
 var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
@@ -73,22 +75,27 @@ function unselectButtons(selector1, selector2, border, color) {
   }
 }
 
-// use event on start activity button to capsure input
-// use parseInt() to convert from string to number
-// do not accept e in the number inputs
 
-function checkInputs() {
-  if (!userAccomplish) {
-    show(accomplishError)
-    return false;
-  }
-  if (!minutes.value) {
-    show(minutesError);
-    return false;
-  }
-  if (!seconds.value) {
-    show(secondsError);
-    return false;
+
+var minError = document.querySelector('#minutesError');
+var secError = document.querySelector('#secondsError');
+
+seconds.addEventListener('blur', secondsError);
+minutes.addEventListener('blur', minuteError);
+
+function minuteError(){
+  errorCheck(minutes, minError);
+}
+
+function secondsError() {
+  errorCheck(seconds, secError);
+}
+
+function errorCheck(inputField, errorMessage) {
+  if (!parseInt(inputField.value)) {
+    errorMessage.classList.remove('visibility');
+  } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
+    errorMessage.classList.toggle('visibility');
   }
 }
 
