@@ -33,9 +33,7 @@ function clock(accomp, min, sec) {
   `;
 }
 function showActivity() {
-checkInputs();
 form.classList.add('hidden');
-var inputValues = checkImputs;
 var userCategory = button;
 var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
