@@ -11,10 +11,9 @@ var userAccomplish = document.querySelector('#accomplish')
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
-
-var userAccomplish = document.querySelector('#accomplish')
-
 var form = document.querySelector('#activityForm');
+var clockForm = document.querySelector('#clockForm');
+
 
 buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
@@ -24,6 +23,15 @@ buttonStart.addEventListener('click', showActivity);
 
 var button = '';
 
+function clock(accomp, min, sec) {
+  clockForm.innerHTML = `
+  <div class="timer">
+    <p class="accomp">${accomp}</p>
+    <p class="min">${min}:${sec}</p>
+    <p class="sec"></p>
+  </div>
+  `;
+}
 function showActivity() {
 var userCategory = button;
 var userDescription = userAccomplish.value;
@@ -42,6 +50,8 @@ function buttonError() {
   buttonStart.classList.toggle('backgroundColor')
   setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 600);
   setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 2000);
+var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
+clock(userDescription, userMinutes, userSeconds);
 }
 
 function changeColorOrange() {
@@ -83,34 +93,31 @@ function unselectButtons(selector1, selector2, border, color) {
   }
 }
 
-// use event on start activity button to capsure input
-// use parseInt() to convert from string to number
-// do not accept e in the number inputs
 
-function checkInputs() {
-  if (!userAccomplish) {
-    show(accomplishError)
-    return false;
-  }
-  if (!minutes.value) {
-    show(minutesError);
-    return false;
-  }
-  if (!seconds.value) {
-    show(secondsError);
-    return false;
-  }
-}
 
-var minError = document.querySelector('#minutesError')
-minutes.addEventListener('blur', minuteError)
-var secError = document.querySelector('#secondsError')
+var minError = document.querySelector('#minutesError');
+var secError = document.querySelector('#secondsError');
+var accompError = document.querySelector('#accomplishError');
 
 function minuteError(){
   errorCheck(minutes, minError)
 }
 
+seconds.addEventListener('blur', secondsError);
+minutes.addEventListener('blur', minuteError);
+userAccomplish.addEventListener('blur', accomplishError);
 
+function minuteError() {
+  errorCheck(minutes, minError);
+}
+
+function secondsError() {
+  errorCheck(seconds, secError);
+}
+
+function accomplishError() {
+  accomplishErrorCheck(userAccomplish, accompError);
+}
 
 function errorCheck(inputField, errorMessage) {
   if (!parseInt(inputField.value)) {
@@ -118,30 +125,12 @@ function errorCheck(inputField, errorMessage) {
   } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
     errorMessage.classList.toggle('visibility');
   }
-
 }
 
-
-
-function secondsCap(inputField, errorMessage) {
-  if (parseInt(inputField.value) > 60){
+function accomplishErrorCheck(inputField, errorMessage) {
+  if (inputField.value === '') {
     errorMessage.classList.remove('visibility');
+  } else if (inputField.value !== '') {
+    errorMessage.classList.add('visibility');
   }
 }
-
-// function changeColor(event) {
-//   if (event.target.className === "study") {
-//     buttonStudy.classList.toggle("green");
-//     imageStudy.classList.toggle("hidden");
-//     imageStudyActive.classList.toggle("hidden");
-//   } else if (event.target.className === "meditate") {
-//     buttonMeditate.classList.toggle("purple");
-//     imageMeditateActive.classList.toggle('hidden');
-//     imageMeditate.classList.toggle('hidden');
-//   } else if (event.target.className === "exercise") {
-//     buttonExercise.classList.toggle("orange");
-//     imageExercise.classList.toggle("hidden");
-//     imageExerciseActive.classList.toggle("hidden");
-//   } else {
-//   }
-// }
