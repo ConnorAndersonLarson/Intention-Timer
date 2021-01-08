@@ -120,7 +120,7 @@ function accomplishError() {
 }
 
 function errorCheck(inputField, errorMessage) {
-  if (!parseInt(inputField.value)) {
+  if (!parseInt(inputField.value) && parseInt(inputField.value) !== 0) {
     errorMessage.classList.remove('visibility');
   } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
     errorMessage.classList.toggle('visibility');
