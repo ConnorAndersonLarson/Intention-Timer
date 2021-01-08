@@ -12,7 +12,7 @@ var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
 
-var userAccomplish = document.querySelector('#accomplish')
+
 
 var form = document.querySelector('#activityForm');
 
@@ -79,11 +79,14 @@ function unselectButtons(selector1, selector2, border, color) {
 
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
+var accompError = document.querySelector('#accomplishError');
+
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
+userAccomplish.addEventListener('blur', accomplishError);
 
-function minuteError(){
+function minuteError() {
   errorCheck(minutes, minError);
 }
 
@@ -91,10 +94,16 @@ function secondsError() {
   errorCheck(seconds, secError);
 }
 
+function accomplishError() {
+  errorCheck(userAccomplish, accompError);
+}
+
 function errorCheck(inputField, errorMessage) {
   if (!parseInt(inputField.value)) {
     errorMessage.classList.remove('visibility');
   } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
+    errorMessage.classList.toggle('visibility');
+  } else if (accomplishError = "") {
     errorMessage.classList.toggle('visibility');
   }
 }
