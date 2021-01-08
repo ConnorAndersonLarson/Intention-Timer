@@ -123,12 +123,20 @@ function errorCheck(inputField, errorMessage) {
   } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
     errorMessage.classList.toggle('visibility');
   }
-  if (inputField.value.length > 2 && inputField.id === 'seconds') {
-    errorMessage.classList.remove('visibility');
+  if (parseInt(inputField.value) > 59 && inputField.id === 'seconds') {
+    secondsCalc()
   } else if (inputField.value.length === 1 && parseInt(inputField.value)) {
     inputField.value+=0;
     inputField.value=inputField.value.split('').reverse().join('');
   }
+}
+
+function secondsCalc() {
+  var totalSeconds = parseInt(seconds.value);
+  minutes.value = (parseInt(minutes.value)|| parseInt('00')) + Math.floor(totalSeconds/60);
+  seconds.value = totalSeconds % 60;
+  errorCheck(seconds, secError);
+  errorCheck(minutes, minError);
 }
 
 
