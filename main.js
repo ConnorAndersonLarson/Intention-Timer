@@ -41,7 +41,7 @@ var userSeconds = seconds.value;
     form.classList.add('hidden');
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds)
-  }else{
+  } else if (userCategory === '' || userDescription === '' || userMinutes === '' || userSeconds === '') {
     buttonError()
   }
 }
@@ -91,15 +91,9 @@ function unselectButtons(selector1, selector2, border, color) {
   }
 }
 
-
-
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
 var accompError = document.querySelector('#accomplishError');
-
-function minuteError(){
-  errorCheck(minutes, minError)
-}
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
@@ -130,8 +124,6 @@ function errorCheck(inputField, errorMessage) {
     inputField.value=inputField.value.split('').reverse().join('');
   }
 }
-
-
 
 function accomplishErrorCheck(inputField, errorMessage) {
   if (inputField.value === '') {
