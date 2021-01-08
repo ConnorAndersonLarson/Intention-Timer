@@ -20,7 +20,7 @@ buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 
-
+var currentActivity = ''
 var button = '';
 
 function clock(accomp, min, sec) {
@@ -39,7 +39,7 @@ var userMinutes = minutes.value;
 var userSeconds = seconds.value;
   if(userCategory && userDescription && userMinutes && userSeconds){
     form.classList.add('hidden');
-    var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
+    currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds)
   }else{
     buttonError()
@@ -50,8 +50,6 @@ function buttonError() {
   buttonStart.classList.toggle('backgroundColor')
   setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 150);
   setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 1700);
-var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
-clock(userDescription, userMinutes, userSeconds);
 }
 
 function changeColorOrange() {
