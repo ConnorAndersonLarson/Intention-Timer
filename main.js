@@ -11,7 +11,6 @@ var userAccomplish = document.querySelector('#accomplish')
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
-var userAccomplish = document.querySelector('#accomplish')
 var form = document.querySelector('#activityForm');
 var clockForm = document.querySelector('#clockForm');
 
@@ -34,7 +33,9 @@ function clock(accomp, min, sec) {
   `;
 }
 function showActivity() {
+checkInputs();
 form.classList.add('hidden');
+var inputValues = checkImputs;
 var userCategory = button;
 var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
@@ -83,17 +84,40 @@ function unselectButtons(selector1, selector2, border, color) {
 }
 
 
-function checkInputs() {
-  if (!userAccomplish) {
-    show(accomplishError)
-    return false;
+
+var minError = document.querySelector('#minutesError');
+var secError = document.querySelector('#secondsError');
+var accompError = document.querySelector('#accomplishError');
+
+
+seconds.addEventListener('blur', secondsError);
+minutes.addEventListener('blur', minuteError);
+userAccomplish.addEventListener('blur', accomplishError);
+
+function minuteError() {
+  errorCheck(minutes, minError);
+}
+
+function secondsError() {
+  errorCheck(seconds, secError);
+}
+
+function accomplishError() {
+  accomplishErrorCheck(userAccomplish, accompError);
+}
+
+function errorCheck(inputField, errorMessage) {
+  if (!parseInt(inputField.value)) {
+    errorMessage.classList.remove('visibility');
+  } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
+    errorMessage.classList.toggle('visibility');
   }
-  if (!minutes.value) {
-    show(minutesError);
-    return false;
-  }
-  if (!seconds.value) {
-    show(secondsError);
-    return false;
+}
+
+function accomplishErrorCheck(inputField, errorMessage) {
+  if (inputField.value === '') {
+    errorMessage.classList.remove('visibility');
+  } else if (inputField.value !== '') {
+    errorMessage.classList.add('visibility');
   }
 }
