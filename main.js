@@ -40,7 +40,7 @@ var userSeconds = seconds.value;
   if(userCategory && userDescription && userMinutes && userSeconds){
     form.classList.add('hidden');
     var currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
-    console.log(currentActivity)
+    clock(userDescription, userMinutes, userSeconds)
   }else{
     buttonError()
   }
