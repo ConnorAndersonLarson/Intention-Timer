@@ -13,14 +13,20 @@ var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
 var form = document.querySelector('#activityForm');
 var clockForm = document.querySelector('#clockForm');
+var categoryError = document.querySelector('#buttonError');
+var minError = document.querySelector('#minutesError');
+var secError = document.querySelector('#secondsError');
+var accompError = document.querySelector('#accomplishError');
 
-
-buttonMeditate.addEventListener('click', changeColorPurple);
+seconds.addEventListener('blur', secondsError);
+minutes.addEventListener('blur', minuteError);
+userAccomplish.addEventListener('blur', accomplishError);buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 
 var currentActivity = '';
+var previousActivities = []
 var button = '';
 
 function clock(accomp, min, sec) {
@@ -59,21 +65,10 @@ var userSeconds = seconds.value;
   }
 }
 
-var categoryError = document.querySelector('#buttonError');
 // form.addEventListener('blur', activityFormError);
 // categoryError.addEventListener('blur', catSelectionError);
 
-function catSelectionError() {
-  activityFormError(categoryError, );
-}
 
-function activityFormError(errorMessage) {
-  if (button === '') {
-    errorMessage.classList.remove('visibility');
-  } else if (button !== '') {
-    errorMessage.classList.add('visibility');
-  }
-}
 
 function buttonError() {
   buttonStart.classList.toggle('backgroundColor')
@@ -82,7 +77,19 @@ function buttonError() {
   minuteError();
   secondsError();
   accomplishError();
+  activityFormError();
+}
+
+function catSelectionError() {
   activityFormError(categoryError);
+}
+
+function activityFormError() {
+  if (button === '') {
+    categoryError.classList.remove('visibility');
+  } else if (button !== '' && !categoryError.classList.contains('visibility')) {
+    categoryError.classList.add('visibility');
+  }
 }
 
 function changeColorOrange() {
