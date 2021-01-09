@@ -49,7 +49,9 @@ function show(element) {
 }
 
 function goHome() {
-  buttonNewActivity.classList.add('hidden');
+  hide(buttonNewActivity);
+  hide(formNewActivity);
+  show(form);
 
 }
 
