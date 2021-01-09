@@ -253,14 +253,28 @@ transform: scaleY(1.1);
 }
 
 /* The SVG path that displays the timer's progress */
-.base-timer__path-elapsed {
+.path-elapsed {
+  stroke-width: 1px;
+  stroke: white;
+}
+
+.timer-meditate {
   stroke-width: 1px;
   stroke: #C278FD;
 }
 
+.timer-study {
+  stroke-width: 1px;
+  stroke: #B3FD78;
+}
+
+.timer-exercise {
+  stroke-width: 1px;
+  stroke: #FD8078;
+}
 .inner-circle {
   position: absolute;
-  height: 114%;
+  height: 116%;
   width: 100%;
   top: 0;
   display: flex;
