@@ -207,13 +207,6 @@ p {
   background-color: #db4d4b;
 }
 
-.hidden {
-  display: none;
-}
-
-.visibility {
-  visibility:hidden;
-}
 
 /* CLOCK STUFF */
 
@@ -225,24 +218,79 @@ p {
 .timer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   background-color: #46424D;
   position: relative;
   height: 600px;
   width: 100%;
 }
 
+.accomp-box {
+  display: flex;
+  align-self: : : flex-end;
+  height: 70px;
+}
+
 .accomp {
 font-size: 125%;
-font-weight:bolder;
+font-weight: bolder;
 transform: scaleY(1.1);
 }
 
-.min, .sec {
+.min {
   font-size: 500%;
   color: #FFF;
   font-family: 'Arial';
   font-weight: 800;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 1px;
+  stroke: #C278FD;
+}
+
+.inner-circle {
+  position: absolute;
+  height: 660px;
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'Arial';
+  transform: scaleY(1.1);
+}
+
+.log-box {
+  display: flex;
+  height: 60%;
+}
+.log {
+  align-self: flex-start;
+  width: 30%;
+  height: 40px;
+  border-radius: 3px;
+  border: none;
+  background-color: #CBC9CF;
+  color: #2B2733;
+  font-size: 15px;
+  transform: scaleY(1.1);
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.visibility {
+  visibility:hidden;
 }
 
 /* Main background: #2B2733
