@@ -18,7 +18,11 @@ var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
 var accompError = document.querySelector('#accomplishError');
 var categoryButtons = document.querySelector('.button-box');
-
+var clockTime = document.querySelector('#clockTime');
+var clockAccomp = document.querySelector('#clockAccomp');
+var circlePurple = document.querySelector('.timer-meditate');
+var circleOrange = document.querySelector('.timer-exercise');
+var circleGreen = document.querySelector('.timer-study');
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -31,28 +35,22 @@ buttonStart.addEventListener('click', showActivity);
 var currentActivity = '';
 var previousActivities = [];
 
-// function runClock(minutes, seconds) {
-//   var minuteCount = Math.floor(())
-// }
 
 function clock(accomp, min, sec) {
-  clockForm.innerHTML = `
-  <div class="timer">
-    <p class="accomp">${accomp}</p>
-    <p class="min">${min}:${sec}</p>
-    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="35" />
-    </g>
-    </svg>
-    <span id="circleText" class="inner-circle">
-      <p>START</p>
-    </span>
-    <div class="log-box">
-      <button id="logActivity" class="log invisibility">LOG ACTIVITY</button>
-    </div>
-  </div>
-  `;
+  clockForm.classList.remove('hidden');
+  clockTime.innerText = `${min}:${sec}`;
+  clockAccomp.innerText = `${accomp}`;
+
+}
+
+function changeCircleColor(userCategory) {
+  if (userCategory === 'Exercise') {
+    circleOrange.classList.remove('hidden');
+  } else if (userCategory === 'Study') {
+    circleGreen.classList.remove('hidden');
+  } else if (userCategory === 'Meditate') {
+    circlePurple.classList.remove('hidden');
+  }
 }
 
 function showActivity() {
@@ -62,9 +60,9 @@ var userMinutes = minutes.value;
 var userSeconds = seconds.value;
   if (userCategory && userDescription && userMinutes && userSeconds) {
     form.classList.add('hidden');
-    currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds);
+    currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds);
-    // runClock(userMinutes, userSeconds);
+    changeCircleColor(userCategory);
   } else {
     buttonError();
   }
