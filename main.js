@@ -33,7 +33,23 @@ var previousActivities = [];
 
 
 function clock(accomp, min, sec) {
-  clockForm.classList.remove('hidden');
+  clockForm.innerHTML = `
+  <div class="timer">
+    <p class="accomp">${accomp}</p>
+    <p class="min">${min}:${sec}</p>
+    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g class="base-timer__circle">
+    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="35" />
+    </g>
+    </svg>
+    <span id="circleText" class="inner-circle">
+      <p>START</p>
+    </span>
+    <div class="log-box">
+      <button id="logActivity" class="log invisibility">LOG ACTIVITY</Button>
+    </div>
+  </div>
+  `;
 }
 
 function showActivity() {
@@ -55,7 +71,7 @@ function categoryButtonFinder() {
     return 'Exercise';
   } else if (buttonStudy.classList[1] !== undefined) {
     return 'Study';
-  } else if (buttonMeditate.classList[1] === undefined) {
+  } else if (buttonMeditate.classList[1] !== undefined) {
     return 'Meditate';
   }
 }

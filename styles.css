@@ -260,7 +260,7 @@ transform: scaleY(1.1);
 
 .inner-circle {
   position: absolute;
-  height: 695px;
+  height: 114%;
   width: 100%;
   top: 0;
   display: flex;
