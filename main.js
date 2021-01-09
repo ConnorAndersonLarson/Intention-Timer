@@ -7,7 +7,7 @@ var imageExercise = document.querySelector('.exercise-image');
 var imageStudyActive = document.querySelector('.study-active');
 var imageMeditateActive = document.querySelector('.meditate-active');
 var imageExerciseActive = document.querySelector('.exercise-active');
-var userAccomplish = document.querySelector('#accomplish')
+var userAccomplish = document.querySelector('#accomplish');
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
@@ -17,19 +17,19 @@ var categoryError = document.querySelector('#buttonError');
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
 var accompError = document.querySelector('#accomplishError');
-var categoryButtons = document.querySelector('.button-box')
+var categoryButtons = document.querySelector('.button-box');
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
-categoryButtons.addEventListener('blur', catSelectionError)
+categoryButtons.addEventListener('blur', catSelectionError);
 buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 
 var currentActivity = '';
-var previousActivities = []
+var previousActivities = [];
 
 
 function clock(accomp, min, sec) {
@@ -63,40 +63,8 @@ var userSeconds = seconds.value;
     form.classList.add('hidden');
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds)
-    console.log(currentActivity)
   } else {
     buttonError();
-  }
-}
-
-// form.addEventListener('blur', activityFormError);
-// categoryError.addEventListener('blur', catSelectionError);
-
-
-
-function buttonError() {
-  buttonStart.classList.toggle('backgroundColor')
-  setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 150);
-  setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 1700);
-  minuteError();
-  secondsError();
-  accomplishError();
-  activityFormError();
-}
-
-function catSelectionError(pressedButton) {
-  var button = pressedButton
-  if (button === undefined || button.classList[1] === undefined) {
-    categoryError.classList.remove('invisibility');
-  } else if (!categoryError.classList.contains('invisibility')){
-    categoryError.classList.add('invisibility');
-  }
-
-}
-
-function activityFormError() {
-  if (buttonExercise.classList[1] === undefined && buttonStudy.classList[1] === undefined && buttonMeditate.classList[1] === undefined) {
-    categoryError.classList.remove('invisibility');
   }
 }
 
@@ -123,8 +91,8 @@ function changeColorGreen() {
     buttonStudy.classList.toggle('green');
     imageStudy.classList.toggle('hidden');
     imageStudyActive.classList.toggle('hidden');
-    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
-    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple')
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonStudy);
 }
 
@@ -132,8 +100,8 @@ function changeColorPurple() {
     buttonMeditate.classList.toggle('purple');
     imageMeditateActive.classList.toggle('hidden');
     imageMeditate.classList.toggle('hidden');
-    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
-    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     catSelectionError(buttonMeditate);
 }
 
@@ -149,13 +117,16 @@ function unselectButtons(selector1, selector2, border, color) {
   }
 }
 
-var minError = document.querySelector('#minutesError');
-var secError = document.querySelector('#secondsError');
-var accompError = document.querySelector('#accomplishError');
 
-seconds.addEventListener('blur', secondsError);
-minutes.addEventListener('blur', minuteError);
-userAccomplish.addEventListener('blur', accomplishError);
+function buttonError() {
+  buttonStart.classList.toggle('backgroundColor');
+  setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 150);
+  setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 1700);
+  minuteError();
+  secondsError();
+  accomplishError();
+  activityFormError();
+}
 
 function minuteError() {
   errorCheck(minutes, minError);
@@ -169,26 +140,34 @@ function accomplishError() {
   accomplishErrorCheck(userAccomplish, accompError);
 }
 
+function catSelectionError(pressedButton) {
+  var button = pressedButton;
+  if (button === undefined || button.classList[1] === undefined) {
+    categoryError.classList.remove('invisibility');
+  } else if (!categoryError.classList.contains('invisibility')){
+    categoryError.classList.add('invisibility');
+  }
+
+}
+
+function activityFormError() {
+  if (buttonExercise.classList[1] === undefined && buttonStudy.classList[1] === undefined && buttonMeditate.classList[1] === undefined) {
+    categoryError.classList.remove('invisibility');
+  }
+}
+
 function errorCheck(inputField, errorMessage) {
-  var input = parseInt(inputField.value)
+  var input = parseInt(inputField.value);
   if (!input && input !== 0) {
     errorMessage.classList.remove('invisibility');
   } else if ((input || input === 0) && !errorMessage.classList.contains('invisibility')) {
     errorMessage.classList.toggle('invisibility');
   }
   if (input > 59 && inputField.id === 'seconds') {
-    secondsCalc()
+    secondsCalc();
   } else if (input || inputField.value === '0') {
     inputField.value = input;
     inputField.value = inputField.value.padStart(2,0);
-  }
-}
-
-function accomplishErrorCheck(inputField, errorMessage) {
-  if (inputField.value === '') {
-    errorMessage.classList.remove('invisibility');
-  } else if (inputField.value !== '') {
-    errorMessage.classList.add('invisibility');
   }
 }
 
@@ -198,4 +177,12 @@ function secondsCalc() {
   seconds.value = totalSeconds % 60;
   errorCheck(seconds, secError);
   errorCheck(minutes, minError);
+}
+
+function accomplishErrorCheck(inputField, errorMessage) {
+  if (inputField.value === '') {
+    errorMessage.classList.remove('invisibility');
+  } else if (inputField.value !== '') {
+    errorMessage.classList.add('invisibility');
+  }
 }
