@@ -34,7 +34,7 @@ var previousActivities = [];
 
 function clock(accomp, min, sec) {
   clockForm.innerHTML = `
-   <div class="timer">
+  <div class="timer">
     <p class="accomp">${accomp}</p>
     <p class="min">${min}:${sec}</p>
     <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -46,10 +46,10 @@ function clock(accomp, min, sec) {
       <p>START</p>
     </span>
     <div class="log-box">
-      <button id="logActivity" class="log">LOG ACTIVITY</Button>
+      <button id="logActivity" class="log invisibility">LOG ACTIVITY</Button>
     </div>
   </div>
-  ` ;
+  `;
 }
 
 function showActivity() {
