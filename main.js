@@ -17,17 +17,20 @@ var categoryError = document.querySelector('#buttonError');
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
 var accompError = document.querySelector('#accomplishError');
+var categoryButtons = document.querySelector('.button-box')
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
-userAccomplish.addEventListener('blur', accomplishError);buttonMeditate.addEventListener('click', changeColorPurple);
+userAccomplish.addEventListener('blur', accomplishError);
+categoryButtons.addEventListener('blur', catSelectionError)
+buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 
 var currentActivity = '';
 var previousActivities = []
-var button = '';
+
 
 function clock(accomp, min, sec) {
   clockForm.innerHTML = `
@@ -52,7 +55,7 @@ function clock(accomp, min, sec) {
 }
 
 function showActivity() {
-var userCategory = button;
+var userCategory = categoryButtonFinder();
 var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
@@ -60,6 +63,7 @@ var userSeconds = seconds.value;
     form.classList.add('hidden');
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds)
+    console.log(currentActivity)
   } else {
     buttonError();
   }
@@ -80,15 +84,29 @@ function buttonError() {
   activityFormError();
 }
 
-function catSelectionError() {
-  activityFormError(categoryError);
+function catSelectionError(pressedButton) {
+  var button = pressedButton
+  if (button === undefined || button.classList[1] === undefined) {
+    categoryError.classList.remove('visibility');
+  } else if (!categoryError.classList.contains('visibility')){
+    categoryError.classList.add('visibility');
+  }
+
 }
 
 function activityFormError() {
-  if (button === '') {
+  if (buttonExercise.classList[1] === undefined && buttonStudy.classList[1] === undefined && buttonMeditate.classList[1] === undefined) {
     categoryError.classList.remove('visibility');
-  } else if (button !== '' && !categoryError.classList.contains('visibility')) {
-    categoryError.classList.add('visibility');
+  }
+}
+
+function categoryButtonFinder() {
+  if (buttonExercise.classList[1] !== undefined) {
+    return 'Exercise';
+  } else if (buttonStudy.classList[1] !== undefined) {
+    return 'Study';
+  } else if (buttonMeditate.classList[1] === undefined) {
+    return 'Meditate';
   }
 }
 
@@ -98,7 +116,7 @@ function changeColorOrange() {
     imageExerciseActive.classList.toggle('hidden');
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
-    button = 'Meditate';
+    catSelectionError(buttonExercise);
 }
 
 function changeColorGreen() {
@@ -107,7 +125,7 @@ function changeColorGreen() {
     imageStudyActive.classList.toggle('hidden');
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple')
-    button = 'Study';
+    catSelectionError(buttonStudy);
 }
 
 function changeColorPurple() {
@@ -116,7 +134,7 @@ function changeColorPurple() {
     imageMeditate.classList.toggle('hidden');
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange')
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green')
-    button = 'Exercise';
+    catSelectionError(buttonMeditate);
 }
 
 function unselectButtons(selector1, selector2, border, color) {
