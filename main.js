@@ -3,6 +3,7 @@ var buttonMeditate = document.querySelector('#meditate');
 var buttonExercise = document.querySelector('#exercise');
 var buttonLog = document.querySelector('#logActivity');
 var buttonNewActivity = document.querySelector('#newActivityButton');
+var buttonStart = document.querySelector('#start');
 var imageStudy = document.querySelector('.study-image');
 var imageMeditate = document.querySelector('.meditate-image');
 var imageExercise = document.querySelector('.exercise-image');
@@ -12,7 +13,6 @@ var imageExerciseActive = document.querySelector('.exercise-active');
 var userAccomplish = document.querySelector('#accomplish');
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
-var buttonStart = document.querySelector('#start');
 var form = document.querySelector('#activityForm');
 var clockForm = document.querySelector('#clockForm');
 var formNewActivity = document.querySelector('#activateNew')
@@ -40,7 +40,16 @@ buttonNewActivity.addEventListener('click', goHome);
 var currentActivity = '';
 var previousActivities = [];
 
+function hide(element) {
+  element.classList.add('hidden')
+}
+
+function show(element) {
+  element.classList.remove('hidden');
+}
+
 function goHome() {
+  buttonNewActivity.classList.add('hidden');
 
 }
 
