@@ -160,6 +160,7 @@ function errorCheck(inputField, errorMessage) {
   var input = parseInt(inputField.value);
   if (!input && input !== 0) {
     errorMessage.classList.remove('invisibility');
+    inputField.value = "";
   } else if ((input || input === 0) && !errorMessage.classList.contains('invisibility')) {
     errorMessage.classList.toggle('invisibility');
   }
