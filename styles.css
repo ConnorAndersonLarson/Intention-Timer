@@ -207,7 +207,34 @@ p {
   background-color: #db4d4b;
 }
 
+.new-activity-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #46424D;
+  position: relative;
+  height: 600px;
+  width: 100%;
+  box-shadow: 7px 7px #26222D;
+}
 
+/* .new-activity-button-page {
+  display: flex;
+  height 80%;
+} */
+
+.new-activity-button {
+  align-self: center;
+  margin-top: 100px;
+  width: 300px;
+  height: 35px;
+  border-radius: 3px;
+  border: none;
+  background-color: #CBC9CF;
+  color: #2B2733;
+  font-size: 15px;
+  transform: scaleY(1.1);
+  outline: none;
+}
 /* CLOCK STUFF */
 
 /* Sets the containers height and width */
@@ -222,6 +249,7 @@ p {
   position: relative;
   height: 600px;
   width: 100%;
+  box-shadow: 7px 7px #26222D;
 }
 
 .accomp-box {

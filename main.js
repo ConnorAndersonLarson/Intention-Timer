@@ -1,6 +1,8 @@
 var buttonStudy = document.querySelector('#study');
 var buttonMeditate = document.querySelector('#meditate');
 var buttonExercise = document.querySelector('#exercise');
+var buttonLog = document.querySelector('#logActivity');
+var buttonNewActivity = document.querySelector('#newActivityButton');
 var imageStudy = document.querySelector('.study-image');
 var imageMeditate = document.querySelector('.meditate-image');
 var imageExercise = document.querySelector('.exercise-image');
@@ -13,6 +15,7 @@ var minutes = document.querySelector('#minutes');
 var buttonStart = document.querySelector('#start');
 var form = document.querySelector('#activityForm');
 var clockForm = document.querySelector('#clockForm');
+var formNewActivity = document.querySelector('#activateNew')
 var categoryError = document.querySelector('#buttonError');
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
@@ -31,11 +34,22 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
+buttonLog.addEventListener('click', addCard);
+buttonNewActivity.addEventListener('click', goHome);
 
 var currentActivity = '';
 var previousActivities = [];
 
+function goHome() {
 
+}
+
+function addCard() {
+clockForm.classList.add('hidden');
+formNewActivity.classList.remove('hidden');
+buttonNewActivity.classList.remove('hidden');
+
+}
 function clock(accomp, min, sec) {
   clockForm.classList.remove('hidden');
   clockTime.innerText = `${min}:${sec}`;
