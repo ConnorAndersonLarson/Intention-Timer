@@ -170,16 +170,17 @@ function accomplishError() {
 }
 
 function errorCheck(inputField, errorMessage) {
-  if (!parseInt(inputField.value) && parseInt(inputField.value) !== 0) {
+  var input = parseInt(inputField.value)
+  if (!input && input !== 0) {
     errorMessage.classList.remove('invisibility');
-  } else if (parseInt(inputField.value) && !errorMessage.classList.contains('invisibility')) {
+  } else if ((input || input === 0) && !errorMessage.classList.contains('invisibility')) {
     errorMessage.classList.toggle('invisibility');
   }
-  if (parseInt(inputField.value) > 59 && inputField.id === 'seconds') {
+  if (input > 59 && inputField.id === 'seconds') {
     secondsCalc()
-  } else if (inputField.value.length === 1 && parseInt(inputField.value)) {
-    inputField.value+=0;
-    inputField.value=inputField.value.split('').reverse().join('');
+  } else if (input || inputField.value === '0') {
+    inputField.value = input;
+    inputField.value = inputField.value.padStart(2,0);
   }
 }
 
