@@ -46,7 +46,7 @@ function clock(accomp, min, sec) {
       <p>START</p>
     </span>
     <div class="log-box">
-      <button id="logActivity" class="log invisibility">LOG ACTIVITY</Button>
+      <button id="logActivity" class="log invisibility">LOG ACTIVITY</button>
     </div>
   </div>
   `;
