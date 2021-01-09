@@ -26,9 +26,21 @@ var button = '';
 function clock(accomp, min, sec) {
   clockForm.innerHTML = `
   <div class="timer">
+    <!-- <div class="accomp-box"> -->
     <p class="accomp">${accomp}</p>
+    <!-- </div> -->
     <p class="min">${min}:${sec}</p>
-    <p class="sec"></p>
+    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g class="base-timer__circle">
+    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="35" />
+    </g>
+    </svg>
+    <span id="circleText" class="inner-circle">
+      <p>START</p>
+    </span>
+    <div class="log-box">
+      <button id="logActivity" class="log">LOG ACTIVITY</Button>
+    </div>
   </div>
   `;
 }
