@@ -20,7 +20,7 @@ buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 
-var currentActivity = ''
+var currentActivity = '';
 var button = '';
 
 function clock(accomp, min, sec) {
@@ -32,17 +32,34 @@ function clock(accomp, min, sec) {
   </div>
   `;
 }
+
 function showActivity() {
 var userCategory = button;
 var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
-  if(userCategory && userDescription && userMinutes && userSeconds){
+  if (userCategory && userDescription && userMinutes && userSeconds) {
     form.classList.add('hidden');
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds)
-  } else if (userCategory === '' || userDescription === '' || userMinutes === '' || userSeconds === '') {
-    buttonError()
+  } else {
+    buttonError();
+  }
+}
+
+var categoryError = document.querySelector('#buttonError');
+// form.addEventListener('blur', activityFormError);
+// categoryError.addEventListener('blur', catSelectionError);
+
+function catSelectionError() {
+  activityFormError(categoryError, );
+}
+
+function activityFormError(errorMessage) {
+  if (button === '') {
+    errorMessage.classList.remove('visibility');
+  } else if (button !== '') {
+    errorMessage.classList.add('visibility');
   }
 }
 
@@ -50,6 +67,10 @@ function buttonError() {
   buttonStart.classList.toggle('backgroundColor')
   setTimeout(function(){ buttonStart.classList.toggle('activityError'); }, 150);
   setTimeout(function(){ buttonStart.classList.toggle('activityError'); buttonStart.classList.toggle('backgroundColor') }, 1700);
+  minuteError();
+  secondsError();
+  accomplishError();
+  activityFormError(categoryError);
 }
 
 function changeColorOrange() {
@@ -131,4 +152,12 @@ function accomplishErrorCheck(inputField, errorMessage) {
   } else if (inputField.value !== '') {
     errorMessage.classList.add('visibility');
   }
+}
+
+function secondsCalc() {
+  var totalSeconds = parseInt(seconds.value);
+  minutes.value = (parseInt(minutes.value)|| parseInt('00')) + Math.floor(totalSeconds/60);
+  seconds.value = totalSeconds % 60;
+  errorCheck(seconds, secError);
+  errorCheck(minutes, minError);
 }
