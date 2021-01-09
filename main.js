@@ -87,16 +87,16 @@ function buttonError() {
 function catSelectionError(pressedButton) {
   var button = pressedButton
   if (button === undefined || button.classList[1] === undefined) {
-    categoryError.classList.remove('visibility');
-  } else if (!categoryError.classList.contains('visibility')){
-    categoryError.classList.add('visibility');
+    categoryError.classList.remove('invisibility');
+  } else if (!categoryError.classList.contains('invisibility')){
+    categoryError.classList.add('invisibility');
   }
 
 }
 
 function activityFormError() {
   if (buttonExercise.classList[1] === undefined && buttonStudy.classList[1] === undefined && buttonMeditate.classList[1] === undefined) {
-    categoryError.classList.remove('visibility');
+    categoryError.classList.remove('invisibility');
   }
 }
 
@@ -171,9 +171,9 @@ function accomplishError() {
 
 function errorCheck(inputField, errorMessage) {
   if (!parseInt(inputField.value) && parseInt(inputField.value) !== 0) {
-    errorMessage.classList.remove('visibility');
-  } else if (parseInt(inputField.value) && !errorMessage.classList.contains('visibility')) {
-    errorMessage.classList.toggle('visibility');
+    errorMessage.classList.remove('invisibility');
+  } else if (parseInt(inputField.value) && !errorMessage.classList.contains('invisibility')) {
+    errorMessage.classList.toggle('invisibility');
   }
   if (parseInt(inputField.value) > 59 && inputField.id === 'seconds') {
     secondsCalc()
@@ -185,9 +185,9 @@ function errorCheck(inputField, errorMessage) {
 
 function accomplishErrorCheck(inputField, errorMessage) {
   if (inputField.value === '') {
-    errorMessage.classList.remove('visibility');
+    errorMessage.classList.remove('invisibility');
   } else if (inputField.value !== '') {
-    errorMessage.classList.add('visibility');
+    errorMessage.classList.add('invisibility');
   }
 }
 
