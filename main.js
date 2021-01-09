@@ -40,29 +40,40 @@ buttonNewActivity.addEventListener('click', goHome);
 var currentActivity = '';
 var previousActivities = [];
 
-function hide(element) {
-  element.classList.add('hidden')
+
+function hide(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('hidden');
+  }
 }
 
-function show(element) {
-  element.classList.remove('hidden');
+function show(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('hidden');
+  }
+}
+
+function toggle(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.toggle('hidden');
+  }
 }
 
 function goHome() {
-  hide(buttonNewActivity);
-  hide(formNewActivity);
-  show(form);
+  hide([buttonNewActivity, formNewActivity]);
+  // hide(formNewActivity);
+  show([form]);
 
 }
 
 function addCard() {
-clockForm.classList.add('hidden');
-formNewActivity.classList.remove('hidden');
-buttonNewActivity.classList.remove('hidden');
-
+hide([clockForm])
+show([formNewActivity, buttonNewActivity]);
+// show(buttonNewActivity)
 }
+
 function clock(accomp, min, sec) {
-  clockForm.classList.remove('hidden');
+  show([clockForm]);
   clockTime.innerText = `${min}:${sec}`;
   clockAccomp.innerText = `${accomp}`;
 
@@ -70,11 +81,11 @@ function clock(accomp, min, sec) {
 
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
-    circleOrange.classList.remove('hidden');
+    show([circleOrange]);
   } else if (userCategory === 'Study') {
-    circleGreen.classList.remove('hidden');
+    show([circleGreen]);
   } else if (userCategory === 'Meditate') {
-    circlePurple.classList.remove('hidden');
+    show([circlePurple]);
   }
 }
 
@@ -84,7 +95,7 @@ var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
   if (userCategory && userDescription && userMinutes && userSeconds) {
-    form.classList.add('hidden');
+    hide([form]);
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds);
     changeCircleColor(userCategory);
@@ -105,8 +116,8 @@ function categoryButtonFinder() {
 
 function changeColorOrange() {
     buttonExercise.classList.toggle('orange');
-    imageExercise.classList.toggle('hidden');
-    imageExerciseActive.classList.toggle('hidden');
+    toggle([imageExercise, imageExerciseActive]);
+    // toggle(imageExerciseActive, 'hidden');
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonExercise);
@@ -114,8 +125,8 @@ function changeColorOrange() {
 
 function changeColorGreen() {
     buttonStudy.classList.toggle('green');
-    imageStudy.classList.toggle('hidden');
-    imageStudyActive.classList.toggle('hidden');
+    toggle([imageStudy, imageStudyActive]);
+    // toggle(imageStudyActive);
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonStudy);
@@ -123,8 +134,8 @@ function changeColorGreen() {
 
 function changeColorPurple() {
     buttonMeditate.classList.toggle('purple');
-    imageMeditateActive.classList.toggle('hidden');
-    imageMeditate.classList.toggle('hidden');
+    toggle([imageMeditateActive, imageMeditate]);
+    // toggle(imageMeditate);
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     catSelectionError(buttonMeditate);
@@ -132,10 +143,10 @@ function changeColorPurple() {
 
 function unselectButtons(selector1, selector2, border, color) {
   if (selector1.classList.contains('hidden')) {
-    selector1.classList.remove('hidden');
+    show([selector1]);
   }
   if (!selector2.classList.contains('hidden')) {
-    selector2.classList.toggle('hidden');
+    toggle([selector2]);
   }
   if (border.classList.contains(color)) {
     border.classList.toggle(color);
