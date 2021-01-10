@@ -27,7 +27,10 @@ var circlePurple = document.querySelector('.timer-meditate');
 var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
 var newCard = document.querySelector('#pastActivitiesPage');
-var notLog = document.querySelector('#noLog');
+var noLog = document.querySelector('#noLog');
+var startTimer = document.querySelector('#circleText')
+var buttonLog = document.querySelector('#logActivity')
+
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -38,6 +41,7 @@ buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 buttonLog.addEventListener('click', logTheActivity);
 buttonNewActivity.addEventListener('click', goHome);
+startTimer.addEventListener('click', starter)
 
 var currentActivity = '';
 var previousActivities = [];
@@ -101,14 +105,17 @@ function logTheActivity() {
     show([formNewActivity, buttonNewActivity]);
     addCard();
     clearInputs();
+function starter() {
+  currentActivity.countdown();
+  console.log('test');
 }
 
 function clock(accomp, min, sec) {
   show([clockForm]);
   clockTime.innerText = `${min}:${sec}`;
   clockAccomp.innerText = `${accomp}`;
-
 }
+
 
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
@@ -209,7 +216,7 @@ function catSelectionError(pressedButton) {
   var button = pressedButton;
   if (button === undefined || button.classList[1] === undefined) {
     categoryError.classList.remove('invisibility');
-  } else if (!categoryError.classList.contains('invisibility')){
+  } else if (!categoryError.classList.contains('invisibility')) {
     categoryError.classList.add('invisibility');
   }
 
