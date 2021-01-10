@@ -24,7 +24,7 @@ var circlePurple = document.querySelector('.timer-meditate');
 var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
 var startTimer = document.querySelector('#circleText')
-var buttonLog = document.querySelector('#logActivity') 
+var buttonLog = document.querySelector('#logActivity')
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
@@ -40,8 +40,8 @@ var currentActivity = '';
 var previousActivities = [];
 
 function starter() {
-  currentActivity.countdown()
-  console.log('test')
+  currentActivity.countdown();
+  console.log('test');
 }
 
 function clock(accomp, min, sec) {
