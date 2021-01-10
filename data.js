@@ -41,7 +41,7 @@ var messages = [
   "Each person must live their life as a model for others.",
   "Absolutes are a tool of the dark side."
   "A champion is defined not by their wins but by how they can recover when they fall.",
-  "You can lead a horse to water, but it's going to take a lot of effort tif you want to drown that SOB."
+  "You can lead a horse to water, but it's going to take a lot of effort if you want to drown that SOB."
   "GitHub is there to make your life easier".,
   "Make sure to have fun storming the castle".,
   "Make your own path, unless you are lost in the woods. Then someone else's path will do just fine.",
