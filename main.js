@@ -69,6 +69,10 @@ function goHome() {
   show([form]);
 }
 
+function starter() {
+currentActivity.countdown();
+console.log('test');
+}
 
 function clearInputs() {
   var allInputs = document.querySelectorAll('input');
@@ -108,6 +112,7 @@ function logTheActivity() {
 function starter() {
   currentActivity.countdown();
   console.log('test');
+  }
 }
 
 function clock(accomp, min, sec) {
