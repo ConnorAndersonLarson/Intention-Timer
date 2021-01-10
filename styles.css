@@ -285,6 +285,10 @@ transform: scaleY(1.1);
   transform: scaleY(1.1);
 }
 
+.inner-circle > p {
+  cursor: pointer;
+}
+
 .log-box {
   display: flex;
   height: 40%;
