@@ -213,6 +213,13 @@ p {
 /* Sets the containers height and width */
 .clock-visual {
   display: flex;
+  box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
+}
+
+.message {
+  align-self:center;
+  padding: 10px;
 }
 
 .timer {

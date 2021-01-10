@@ -37,12 +37,9 @@ class Activity {
           clockTime.innerText = '00:00';
           buttonLog.classList.remove('invisibility');
           that.markComplete();
-          alert('You be done ya nerd.');
         }
     }, 1000);
   }
-
-
 
   markComplete() {
     this.completed = true;
