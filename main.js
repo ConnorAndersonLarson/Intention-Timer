@@ -34,7 +34,7 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
-buttonLog.addEventListener('click', addCard);
+buttonLog.addEventListener('click', logTheActivity);
 buttonNewActivity.addEventListener('click', goHome);
 
 var currentActivity = '';
@@ -57,6 +57,16 @@ function toggle(elements) {
     elements[i].classList.toggle('hidden');
   }
 }
+var pastActivitiesPage = document.querySelector('#pastActivitiesPage');
+function addCard() {
+  pastActivitiesPage.innerHTML = `
+
+  `;
+
+}
+
+var notLog1 = document.querySelector('#notLog1');
+var notLog2 = document.querySelector('#notLog2');
 
 function goHome() {
   hide([buttonNewActivity, formNewActivity]);
@@ -74,10 +84,11 @@ function clearInputs() {
   }
 }
 
-function addCard() {
-hide([clockForm])
+function logTheActivity() {
+hide([clockForm, notLog1, notLog2])
 show([formNewActivity, buttonNewActivity]);
 clearInputs()
+
 }
 
 function clock(accomp, min, sec) {
