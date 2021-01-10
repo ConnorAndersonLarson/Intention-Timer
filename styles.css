@@ -334,8 +334,9 @@ margin: 10px;
 }
 
 .past-activities-box {
-display: flex;
-flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .new-card {
@@ -343,12 +344,22 @@ flex-direction: column;
   flex-direction: row;
   color: #CBC9CF;
   background-color: #46424D;
+  margin-top: -20px;
+  margin-left: -17%;
+  padding-left: 0px;
+  width: 133%;
+  height: 100px;
+  box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
 }
 
 .new-card-text-box {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
+  align-content: space-around;
+  justify-content: space-around;
+  width: 70%;
+  margin-left: 10px;
 }
 
 .card-category {
@@ -363,18 +374,23 @@ flex-direction: column;
 
 }
 
-.card-color-tag-box {
-  align-self: flex-end;
-  height: 40px;
-  width: 38px;
-  background-color: #C278FD;
+.card-color-container {
+  display: flex;
+  justify-content: flex-end;
+  height:60px;
+  width: 30%;
 }
 
-.card-color-container {
-  background-color: #B3FD78;
-  height:20px;
-  width: 50%;
+.card-color-tag-box {
+  align-self: flex-start;
+  height: 30px;
+  width: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #C278FD;
+  border-radius: 5px;
 }
+
 
 /* SHADOW CLASSES!! */
 

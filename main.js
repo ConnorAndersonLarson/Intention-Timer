@@ -65,8 +65,7 @@ function addCard() {
 
 }
 
-var notLog1 = document.querySelector('#notLog1');
-var notLog2 = document.querySelector('#notLog2');
+var notLog = document.querySelector('#noLog');
 
 function goHome() {
   hide([buttonNewActivity, formNewActivity]);
@@ -85,7 +84,7 @@ function clearInputs() {
 }
 
 function logTheActivity() {
-hide([clockForm, notLog1, notLog2])
+hide([clockForm, noLog])
 show([formNewActivity, buttonNewActivity]);
 clearInputs()
 
