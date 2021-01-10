@@ -59,6 +59,10 @@ function showMessage() {
   startTimer.addEventListener('click', starter);
 }
 
+function getRandomMessage(messageArray) {
+  return Math.floor(Math.random() * messageArray.length);
+}
+
 function starter() {
   currentActivity.countdown();
   console.log('test');
