@@ -23,8 +23,8 @@ var clockAccomp = document.querySelector('#clockAccomp');
 var circlePurple = document.querySelector('.timer-meditate');
 var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
-var startTimer = document.querySelector('#circleText')
-var buttonLog = document.querySelector('#logActivity')
+var startTimer = document.querySelector('#circleText');
+var buttonLog = document.querySelector('#logActivity');
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
@@ -34,28 +34,29 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
-startTimer.addEventListener('click', starter)
-buttonLog.addEventListener('click', pressLog)
+startTimer.addEventListener('click', starter);
+buttonLog.addEventListener('click', pressLog);
 
 var currentActivity = '';
 var previousActivities = [];
 
-function pressLog() {
-  showMessage()
-}
+// function pressLog() {
+//   showMessage();
+// }
 
 function showMessage() {
-  var clock = document.querySelector('.timer')
-  var category = categoryButtonFinder()
-  var color = ''
+  var clock = document.querySelector('#clockTime');
+  var category = categoryButtonFinder();
+  var color = '';
   if(category === 'Study') {
-    color = 'green'
+    color = 'green';
   } else if (category === 'Meditate') {
-    color = 'purple'
+    color = 'purple';
   } else if (category === 'Exercise') {
-    color = 'orange'
+    color = 'orange';
   }
-  clock.innerHTML=`<section class="message ${color}"> <h3>${messages[getRandomMessage(messages)]}</h3> </section>`
+  clock.innerText=`${messages[getRandomMessage(messages)]}`;
+// <section class="message ${color}"> <h3>
   startTimer.addEventListener('click', starter);
 }
 
