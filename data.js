@@ -1,5 +1,3 @@
-// inspirational messages
-
 var messages = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -33,22 +31,22 @@ var messages = [
   "Let us make our future now, and let us make our dreams tomorrow's reality.",
   "You don't always need a plan. Sometimes you just need to breathe, trust, let go, and see what happens.",
   "If I cannot do great things, I can do small things in a great way.",
-  "Patience is a virtue and ignorance is bliss. You can have a good life if you stop thinking and don't mind waiting around."
   "Don't wait. The time will never be just right.",
   "With the right kind of coaching and determination you can accomplish anything.",
   "If you have good thoughts they will shine out of your face like sunbeams and you will always look lovely.",
   "No matter what people tell you, words and ideas can change the world.",
   "Each person must live their life as a model for others.",
-  "Absolutes are a tool of the dark side."
+  "Absolutes are a tool of the dark side.",
   "A champion is defined not by their wins but by how they can recover when they fall.",
-  "You can lead a horse to water, but it's going to take a lot of effort if you want to drown that SOB."
-  "GitHub is there to make your life easier".,
-  "Make sure to have fun storming the castle".,
+  "Patience is a virtue and ignorance is bliss. You can have a good life if you stop thinking and don't mind waiting around.",
+  "You can lead a horse to water, but it's going to take a lot of effort if you want to drown that SOB.",
+  "GitHub is there to make your life easier.",
+  "Make sure to have fun storming the castle.",
   "Make your own path, unless you are lost in the woods. Then someone else's path will do just fine.",
   "When life gives you lemons, upgrade your dental plan.",
-  "Quit while your behind.",
-  "The crap is usually right behind the 'but'."
-  "There is no 'I' in team, but there is an 'm' and an 'e'."
-  "Think outside Schrodinger's box."
-
+  "Quit while you're behind.",
+  "The crap is usually right behind the 'but'.",
+  "There is no 'I' in team, but there is an 'm' and an 'e'.",
+  "Think outside Schrodinger's box.",
+  "CSS is easy!",
 ];
