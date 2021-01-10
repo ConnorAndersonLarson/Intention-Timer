@@ -324,7 +324,6 @@ display: flex;
 justify-content: center;
 color: #CBC9CF;
 margin: 10px;
-
 }
 
 .past-activities-box > p {
@@ -348,11 +347,12 @@ flex-direction: column;
 
 .new-card-text-box {
   display: flex;
-  flex-direction:
+  flex-direction: column;
+  align-content: space-between;
 }
 
 .card-category {
-color: #FFF;
+  color: #FFF;
 }
 
 .card-time {
@@ -363,8 +363,17 @@ color: #FFF;
 
 }
 
-.card-color-tag {
+.card-color-tag-box {
+  align-self: flex-end;
+  height: 40px;
+  width: 38px;
+  background-color: #C278FD;
+}
 
+.card-color-container {
+  background-color: #B3FD78;
+  height:20px;
+  width: 50%;
 }
 
 /* SHADOW CLASSES!! */
