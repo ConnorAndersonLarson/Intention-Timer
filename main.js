@@ -35,9 +35,21 @@ buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 startTimer.addEventListener('click', starter)
+buttonLog.addEventListener('click', pressLog)
 
 var currentActivity = '';
 var previousActivities = [];
+
+function pressLog() {
+  showMessage()
+}
+
+function showMessage() {
+  var clock = document.querySelector('.timer')
+  clock.innerHTML=`<section class="message"> <h4>We're proud of you</h4> </section>`
+  startTimer.addEventListener('click', starter);
+
+}
 
 function starter() {
   currentActivity.countdown();
