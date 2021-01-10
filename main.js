@@ -40,7 +40,16 @@ function clock(accomp, min, sec) {
   clockForm.classList.remove('hidden');
   clockTime.innerText = `${min}:${sec}`;
   clockAccomp.innerText = `${accomp}`;
+}
 
+
+
+function remainingTime() {
+  var currentTimer = new Date();
+  var countDown = //somthing - currentTimer;
+  if (countDown < 0) {
+    clearTimer(timer);
+  }
 }
 
 function changeCircleColor(userCategory) {
