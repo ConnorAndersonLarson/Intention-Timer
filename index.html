@@ -73,17 +73,26 @@
             <button id="newActivityButton" class="new-activity-button">CREATE A NEW ACTIVITY</button>
         </section>
       </section>
-      <section class="past-activities">
+      <aside class="past-activities">
         <h2>Past Activities</h2>
         <section id="pastActivitiesPage" class="past-activities-box">
           <p id="notLog1">You haven't logged any activities yet.</p>
           <p id="notLog2">Complete the form to the left to get started!</p>
-
-          
+          <section class="new-card">
+            <div class="new-card-text-box">
+              <p class="card-category">${category}</p>
+              <p class="card-time">${min} MIN ${sec} SECONDS</p>
+              <p class="card-accomp">${accomp}</p>
+            </section>
+            <section class="card-color-tag">
+              <section>
+              </section>
+            </section>
+          </section>
         </section>
-      </section>
+      </aside>
     </div>
   </body>
   <script type="text/javascript" src="main.js"></script>
   <script type="text/javascript" src="activity.js"></script>
-</html>
+  </html>
