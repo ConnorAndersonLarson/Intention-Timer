@@ -76,34 +76,17 @@ function clearInputs() {
   }
 }
 
-function changeCardColor() {
-  var box1 = document.querySelector('#box1');
-  var box2 = document.querySelector('#box2');
-  var box3 = document.querySelector('#box3');
-  var category = categoryButtonFinder();
-  if (category === 'Exercise') {
-    show([box3]);
-  } else if (category === 'Study') {
-    show([box1]);
-  } else if (category === 'Meditate') {
-    show([box2]);
-  }
-}
-
 function addCard() {
-  newCard.innerHTML = `
-  <section id="pastActivitiesCard"class="new-card">
+  var color = categoryButtonFinder();
+  newCard.innerHTML += `
+  <section id="pastActivitiesCard" class="new-card">
     <section class="new-card-text-box">
       <g class="card-category">${categoryButtonFinder()}</g>
       <g class="card-time">${minutes.value} MIN ${seconds.value} SECONDS</g>
       <g class="card-accomp">${userAccomplish.value}</g>
     </section>
-    <section class="card-color-container">
-      <section id="box1" class="card-color-tag-study hidden">
-      </section>
-      <section id="box2" class="card-color-tag-meditate hidden">
-      </section>
-      <section id="box3" class="card-color-tag-exercise hidden">
+    <section id="card-color" class="card-color-container">
+      <section id="box1" class="card-color-tag-${color.toLowerCase()}">
       </section>
     </section>
   </section>
@@ -111,10 +94,12 @@ function addCard() {
 }
 
 function logTheActivity() {
+  if (!noLog.classList.contains('hidden')) {
+    hide([noLog]);
+  }
     hide([clockForm])
     show([formNewActivity, buttonNewActivity]);
     addCard();
-    changeCardColor();
     clearInputs();
 }
 
