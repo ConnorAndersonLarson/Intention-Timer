@@ -23,6 +23,9 @@ var clockAccomp = document.querySelector('#clockAccomp');
 var circlePurple = document.querySelector('.timer-meditate');
 var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
+var startTimer = document.querySelector('#circleText')
+var buttonLog = document.querySelector('#logActivity') 
+
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -31,10 +34,15 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
+startTimer.addEventListener('click', starter)
 
 var currentActivity = '';
 var previousActivities = [];
 
+function starter() {
+  currentActivity.countdown()
+  console.log('test')
+}
 
 function clock(accomp, min, sec) {
   clockForm.classList.remove('hidden');
