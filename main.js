@@ -26,6 +26,8 @@ var clockAccomp = document.querySelector('#clockAccomp');
 var circlePurple = document.querySelector('.timer-meditate');
 var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
+var newCard = document.querySelector('#pastActivitiesPage');
+var notLog = document.querySelector('#noLog');
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -57,15 +59,6 @@ function toggle(elements) {
     elements[i].classList.toggle('hidden');
   }
 }
-var pastActivitiesPage = document.querySelector('#pastActivitiesPage');
-function addCard() {
-  pastActivitiesPage.innerHTML = `
-
-  `;
-
-}
-
-var notLog = document.querySelector('#noLog');
 
 function goHome() {
   hide([buttonNewActivity, formNewActivity]);
@@ -83,9 +76,26 @@ function clearInputs() {
   }
 }
 
+function addCard() {
+  newCard.innerHTML = `
+  <section id="pastActivitiesCard"class="new-card">
+    <section class="new-card-text-box">
+      <g class="card-category">${categoryButtonFinder()}</g>
+      <g class="card-time">${minutes.value} MIN ${seconds.value} SECONDS</g>
+      <g class="card-accomp">${userAccomplish.value}</g>
+    </section>
+    <section class="card-color-container">
+      <section class="card-color-tag-box">
+      </section>
+    </section>
+  </section>
+  `;
+}
+
 function logTheActivity() {
 hide([clockForm, noLog])
 show([formNewActivity, buttonNewActivity]);
+addCard()
 clearInputs()
 
 }
