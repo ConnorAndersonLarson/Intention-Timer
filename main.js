@@ -55,12 +55,12 @@ function showMessage() {
   } else if (category === 'Exercise') {
     color = 'orange'
   }
-  clock.innerHTML=`<section class="message ${color}"> <h3>We're proud of you</h3> </section>`
+  clock.innerHTML=`<section class="message ${color}"> <h3>${messages[getRandomMessage(messages)]}</h3> </section>`
   startTimer.addEventListener('click', starter);
 }
 
-function getRandomMessage(messageArray) {
-  return Math.floor(Math.random() * messageArray.length);
+function getRandomMessage(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 function starter() {
