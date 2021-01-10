@@ -40,7 +40,6 @@ buttonNewActivity.addEventListener('click', goHome);
 var currentActivity = '';
 var previousActivities = [];
 
-
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add('hidden');
@@ -61,15 +60,24 @@ function toggle(elements) {
 
 function goHome() {
   hide([buttonNewActivity, formNewActivity]);
-  // hide(formNewActivity);
   show([form]);
+}
 
+
+function clearInputs() {
+  var allInputs = document.querySelectorAll('input');
+  for (var i = 0; i < allInputs.length; i++) {
+    allInputs[i].value = ""
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
+  }
 }
 
 function addCard() {
 hide([clockForm])
 show([formNewActivity, buttonNewActivity]);
-// show(buttonNewActivity)
+clearInputs()
 }
 
 function clock(accomp, min, sec) {
@@ -88,6 +96,7 @@ function changeCircleColor(userCategory) {
     show([circlePurple]);
   }
 }
+
 
 function showActivity() {
 var userCategory = categoryButtonFinder();
@@ -117,7 +126,6 @@ function categoryButtonFinder() {
 function changeColorOrange() {
     buttonExercise.classList.toggle('orange');
     toggle([imageExercise, imageExerciseActive]);
-    // toggle(imageExerciseActive, 'hidden');
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonExercise);
@@ -126,7 +134,6 @@ function changeColorOrange() {
 function changeColorGreen() {
     buttonStudy.classList.toggle('green');
     toggle([imageStudy, imageStudyActive]);
-    // toggle(imageStudyActive);
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonStudy);
@@ -135,7 +142,6 @@ function changeColorGreen() {
 function changeColorPurple() {
     buttonMeditate.classList.toggle('purple');
     toggle([imageMeditateActive, imageMeditate]);
-    // toggle(imageMeditate);
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     catSelectionError(buttonMeditate);
