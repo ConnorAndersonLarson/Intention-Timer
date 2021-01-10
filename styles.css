@@ -219,6 +219,7 @@ p {
 
 .message {
   align-self:center;
+  padding: 10px;
 }
 
 .timer {

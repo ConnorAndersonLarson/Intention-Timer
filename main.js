@@ -46,9 +46,17 @@ function pressLog() {
 
 function showMessage() {
   var clock = document.querySelector('.timer')
-  clock.innerHTML=`<section class="message"> <h4>We're proud of you</h4> </section>`
+  var category = categoryButtonFinder()
+  var color = ''
+  if(category === 'Study') {
+    color = 'green'
+  } else if (category === 'Meditate') {
+    color = 'purple'
+  } else if (category === 'Exercise') {
+    color = 'orange'
+  }
+  clock.innerHTML=`<section class="message ${color}"> <h3>We're proud of you</h3> </section>`
   startTimer.addEventListener('click', starter);
-
 }
 
 function starter() {
