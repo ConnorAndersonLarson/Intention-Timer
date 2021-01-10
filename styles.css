@@ -381,13 +381,33 @@ margin: 10px;
   width: 30%;
 }
 
-.card-color-tag-box {
+.card-color-tag-study {
+  align-self: flex-start;
+  height: 30px;
+  width: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #B3FD78;
+  border-radius: 5px;
+}
+
+.card-color-tag-meditate {
   align-self: flex-start;
   height: 30px;
   width: 5px;
   margin-top: 10px;
   margin-right: 10px;
   background-color: #C278FD;
+  border-radius: 5px;
+}
+
+.card-color-tag-exercise {
+  align-self: flex-start;
+  height: 30px;
+  width: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #FD8078;
   border-radius: 5px;
 }
 
