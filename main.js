@@ -50,7 +50,7 @@ var previousActivities = [];
 function saveActivities() {
   currentActivity.saveToStorage()
   previousActivities.unshift(currentActivity.id)
-  
+
 }
 
 
@@ -82,6 +82,10 @@ function getRandomMessage(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function startToComplete() {
+  var startButton = document.querySelector("#startButtonText");
+  startButton.innerText = `${'COMPLETE!'}`;
+}
 
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
