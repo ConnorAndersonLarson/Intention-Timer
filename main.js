@@ -34,6 +34,8 @@ var noLog = document.querySelector('#noLog');
 var startTimer = document.querySelector('#circleText');
 var buttonLog = document.querySelector('#logActivity');
 var clockNumbers = document.querySelector('#clockTime');
+var startButton = document.querySelector("#startButtonText");
+var allInputs = document.querySelectorAll('input');
 
 window.addEventListener('load',loadActivities);
 seconds.addEventListener('blur', secondsError);
@@ -107,8 +109,7 @@ function unselectButtons(selector1, selector2, border, color) {
 }
 
 function catSelectionError(pressedButton) {
-  var button = pressedButton;
-  if (button === undefined || button.classList[1] === undefined) {
+  if (pressedButton === undefined || pressedButton.classList[1] === undefined) {
     categoryError.classList.remove('invisibility');
   } else if (!categoryError.classList.contains('invisibility')) {
     categoryError.classList.add('invisibility');
@@ -121,10 +122,10 @@ var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
   if (userCategory && userDescription && userMinutes && userSeconds) {
-    hide([form]);
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
-    clock(userDescription, userMinutes, userSeconds);
     changeCircleColor(currentActivity.category);
+    clock(userDescription, userMinutes, userSeconds);
+    hide([form]);
   } else {
     buttonError();
   }
@@ -151,6 +152,12 @@ startTimer.removeEventListener('click', starter);
 currentActivity.countdown();
 }
 
+function startToComplete() {
+  startButton.innerText = 'COMPLETE!';
+  showMessage();
+  buttonLog.classList.remove('invisibility');
+}
+
 function showMessage() {
   var category = categoryButtonFinder();
   var color = '';
@@ -169,13 +176,6 @@ function showMessage() {
 
 function getRandomMessage(array) {
   return Math.floor(Math.random() * array.length);
-}
-
-function startToComplete() {
-  var startButton = document.querySelector("#startButtonText");
-  startButton.innerText = 'COMPLETE!';
-  showMessage();
-  buttonLog.classList.remove('invisibility');
 }
 
 function pressLog() {
@@ -224,7 +224,6 @@ function addCard() {
 }
 
 function clearInputs() {
-  var allInputs = document.querySelectorAll('input');
   for (var i = 0; i < allInputs.length; i++) {
     allInputs[i].value = "";
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
