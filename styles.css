@@ -218,9 +218,15 @@ p {
 }
 
 .message {
-  align-self:center;
-  padding: 10px;
+
+  border: none;
+  margin: 0;
+  padding-top: 0px;
+  font-size: 125%;
+  font-weight: bolder;
+  transform: scaleY(1.1);
 }
+
 
 .timer {
   display: flex;
@@ -244,6 +250,7 @@ font-size: 125%;
 font-weight: bolder;
 transform: scaleY(1.1);
 }
+
 
 .min {
   margin: 0;
@@ -295,6 +302,7 @@ transform: scaleY(1.1);
 .inner-circle > p {
   cursor: pointer;
 }
+
 
 .log-box {
   display: flex;

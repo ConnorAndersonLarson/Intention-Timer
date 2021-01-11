@@ -35,7 +35,7 @@ buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
 startTimer.addEventListener('click', starter);
-buttonLog.addEventListener('click', pressLog);
+// buttonLog.addEventListener('click', pressLog);
 
 var currentActivity = '';
 var previousActivities = [];
@@ -45,7 +45,7 @@ var previousActivities = [];
 // }
 
 function showMessage() {
-  var clock = document.querySelector('#clockTime');
+  var clock = document.querySelector('#inspireQuote');// ('#clockTime');
   var category = categoryButtonFinder();
   var color = '';
   if(category === 'Study') {
@@ -55,8 +55,10 @@ function showMessage() {
   } else if (category === 'Exercise') {
     color = 'orange';
   }
-  clock.innerText=`${messages[getRandomMessage(messages)]}`;
-// <section class="message ${color}"> <h3>
+  clock.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clock.classList.remove('hidden');
+  clockTime.classList.add('hidden');
+
   startTimer.addEventListener('click', starter);
 }
 
