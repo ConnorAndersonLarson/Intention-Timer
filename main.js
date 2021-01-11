@@ -89,8 +89,10 @@ function addCard() {
   newCard.innerHTML += `
   <section id="pastActivitiesCard" class="new-card">
     <section class="new-card-text-box">
-      <g class="card-category">${categoryButtonFinder()}</g>
-      <g class="card-time">${minutes.value} MIN ${seconds.value} SECONDS</g>
+      <section class="text-box-baby">
+        <g class="card-category">${categoryButtonFinder()}</g>
+        <g class="card-time">${minutes.value} MIN ${seconds.value} SECONDS</g>
+      </section>
       <g class="card-accomp">${userAccomplish.value}</g>
     </section>
     <section id="card-color" class="card-color-container">

@@ -1,6 +1,17 @@
 html {
   height: 100%;
+  /* max-height: 972px; */
+  overflow: hidden;
 }
+
+/* .scroll-bar {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+} */
+
+/* .scroll-bar::-webkit-scrollbar {
+  display: none;
+} */
 
 body {
   background-color: #2B2733;
@@ -29,6 +40,12 @@ header {
   justify-content: center;
 }
 
+main {
+  display: flex;
+  justify-content: space-around;
+  height: inherit;
+}
+
 div {
   display: flex;
   justify-content: space-around;
@@ -41,14 +58,16 @@ div {
 }
 
 .new-activity {
+  box-sizing: border-box;
   width: 65%;
   padding: 25px;
   padding-top: 10px;
 }
 
 .form {
+  box-sizing: border-box;
   background-color: #46424D;
-  height: 600px;
+  height: 80%;
   width: 100%;
   box-shadow: 7px 7px #26222D;
   border-radius: 5px;
@@ -57,7 +76,7 @@ div {
   align-items: flex-start;
   justify-content: space-around;
   padding: 50px 140px 50px 140px;
-  box-sizing: border-box;
+  /* max-height: 900px */
 }
 
 .button-box {
@@ -197,7 +216,7 @@ border: 2px solid #FFF;
   flex-direction: column;
   background-color: #46424D;
   position: relative;
-  height: 600px;
+  height: 80%;
   width: 100%;
   box-shadow: 7px 7px #26222D;
 }
@@ -215,27 +234,25 @@ border: 2px solid #FFF;
   transform: scaleY(1.1);
   outline: none;
 }
-/* CLOCK STUFF */
 
+/* CLOCK STUFF */
 
 .clock-visual {
   display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .timer {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   background-color: #46424D;
   position: relative;
-  height: 600px;
+  height: 74.1%;
   width: 100%;
   box-shadow: 7px 7px #26222D;
-}
-
-.accomp-box {
-  display: flex;
-  align-content: flex-end;
-  height: 100px;
+  /* max-height: 900px; */
 }
 
 .accomp {
@@ -248,14 +265,14 @@ transform: scaleY(1.1);
 
 .min {
   margin: 0;
-  font-size: 500%;
+  font-size: 100px;
   color: #FFF;
   font-family: 'Arial';
   font-weight: 800;
 }
 
 
-.base-timer__circle {
+.base-timer-circle {
   fill: none;
   stroke: none;
 }
@@ -280,9 +297,10 @@ transform: scaleY(1.1);
   stroke-width: 1px;
   stroke: #FD8078;
 }
+
 .inner-circle {
   position: absolute;
-  height: 116%;
+  height: 117%;
   width: 100%;
   top: 0;
   display: flex;
@@ -299,12 +317,12 @@ transform: scaleY(1.1);
 
 .log-box {
   display: flex;
-  height: 40%;
+  height: 35%;
 }
 .log {
   align-self: flex-start;
-  width: 250px;
-  height: 35px;
+  width: 30%;
+  height: 33%;
   border-radius: 3px;
   border: none;
   background-color: #CBC9CF;
@@ -316,8 +334,15 @@ transform: scaleY(1.1);
 
 /* PAST ACTIVITIES */
 
+.past-activities::-webkit-scrollbar {
+  display: none;
+}
 .past-activities {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   width: 35%;
+  height: 100%;
   border-left: #46424D solid 4px;
   padding: 25px;
   padding-top: 10px;
@@ -341,6 +366,7 @@ margin: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  /* height: 80%; */
 }
 
 .new-card {
@@ -367,6 +393,11 @@ margin: 10px;
   margin-left: 10px;
 }
 
+.text-box-baby {
+  display: flex;
+  flex-direction: column;
+}
+
 .card-category {
   color: #FFF;
 }
@@ -376,7 +407,7 @@ margin: 10px;
 }
 
 .card-accomp {
-
+  margin-bottom: 10px;
 }
 
 .card-color-container {
@@ -416,7 +447,6 @@ margin: 10px;
   border-radius: 5px;
 }
 
-
 /* SHADOW CLASSES!! */
 
 .hidden {
@@ -425,6 +455,28 @@ margin: 10px;
 
 .invisibility {
   visibility: hidden;
+}
+
+@media screen and (max-width: 1440px) {
+  .inner-circle {
+    height: 120%;
+  }
+
+  .new-activity-form {
+    height: 86.5%;
+    max-height: 608px
+  }
+
+  .timer {
+    height: 78.6%;
+  }
+
+}
+
+@media screen and (min-height: 1000px) {
+  .inner-circle {
+    height: 112%;
+  }
 }
 
 /* Main background: #2B2733
