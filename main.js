@@ -43,21 +43,36 @@ buttonStart.addEventListener('click', showActivity);
 startTimer.addEventListener('click', starter);
 buttonLog.addEventListener('click', pressLog);
 buttonNewActivity.addEventListener('click', goHome);
+window.addEventListener('load',loadActivities)
 
 var currentActivity = '';
 var previousActivities = [];
 
 function saveActivities() {
   currentActivity.saveToStorage()
-  previousActivities.unshift(currentActivity.id)
-
+  previousActivities.push(currentActivity.id)
+  var activityIDs = JSON.stringify(previousActivities)
+  localStorage.setItem('yourPastActivities', activityIDs);
 }
 
+function loadActivities() {
+  if (localStorage.getItem('yourPastActivities') != null) {
+    previousActivities = JSON.parse(localStorage.getItem('yourPastActivities'))
+    for (var i = 0; i < previousActivities.length; i++) {
+      currentActivity = JSON.parse(localStorage.getItem(previousActivities[i]));
+      addCard()
+    }
+    hide([document.querySelector('#noLog')]);
+    currentActivity = ''
+  }
+}
 
  function pressLog() {
+   changeCircleColor(currentActivity.category);
    startTimer.addEventListener('click', starter);
-   clockNumbers.classList.add('min')
-   clockNumbers.classList.remove('inspiration')
+   clockNumbers.classList.add('min');
+   clockNumbers.classList.remove('inspiration');
+   buttonLog.classList.add('invisibility');
    saveActivities()
    logTheActivity();
 }
@@ -84,7 +99,7 @@ function getRandomMessage(array) {
 
 function startToComplete() {
   var startButton = document.querySelector("#startButtonText");
-  startButton.innerText = `${'COMPLETE!'}`;
+  startButton.innerText = 'COMPLETE!';
 }
 
 function hide(elements) {
@@ -112,7 +127,6 @@ function goHome() {
 
 function starter() {
 currentActivity.countdown();
-console.log('test');
 }
 
 function clearInputs() {
@@ -129,8 +143,10 @@ function addCard() {
   newCard.innerHTML += `
   <section id="pastActivitiesCard" class="new-card">
     <section class="new-card-text-box">
-      <g class="card-category">${currentActivity.category}</g>
-      <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+        <section class="text-box-baby">
+          <g class="card-category">${currentActivity.category}</g>
+          <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+        </section>
       <g class="card-accomp">${currentActivity.description}</g>
     </section>
     <section id="card-color" class="card-color-container">
@@ -164,11 +180,11 @@ function clock(accomp, min, sec) {
 
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
-    show([circleOrange]);
+    toggle([circleOrange]);
   } else if (userCategory === 'Study') {
-    show([circleGreen]);
+    toggle([circleGreen]);
   } else if (userCategory === 'Meditate') {
-    show([circlePurple]);
+    toggle([circlePurple]);
   }
 }
 
@@ -182,7 +198,7 @@ var userSeconds = seconds.value;
     hide([form]);
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds);
-    changeCircleColor(userCategory);
+    changeCircleColor(currentActivity.category);
   } else {
     buttonError();
   }

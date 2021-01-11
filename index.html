@@ -6,11 +6,11 @@
     <link href="styles.css" type="text/css" rel="stylesheet">
     <title>Intention Timer</title>
   </head>
-  <body>
+  <body class="scroll-bar">
     <header>
       <h2 class="title">INTENTION TIMER</h2>
     </header>
-    <div>
+    <main>
       <section class="new-activity">
         <h2>New Activity</h2>
         <section id="activityForm" class="form">
@@ -54,18 +54,18 @@
           <div class="timer">
             <p id="clockAccomp" class="accomp">${accomp}</p>
             <p id="clockTime" class="min">${min}:${sec}</p>
-            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g class="base-timer__circle">
-            <circle class="timer-meditate hidden" cx="50" cy="50" r="35" />
-            <circle class="timer-study hidden" cx="50" cy="50" r="35" />
-            <circle class="timer-exercise hidden" cx="50" cy="50" r="35" />
-            </g>
+            <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> -->
+              <g class="base-timer-circle">
+                <circle class="timer-meditate hidden" cx="50" cy="50" r="35" />
+                <circle class="timer-study hidden" cx="50" cy="50" r="35" />
+                <circle class="timer-exercise hidden" cx="50" cy="50" r="35" />
+              </g>
             </svg>
             <span id="circleText" class="inner-circle">
               <p id="startButtonText">START</p>
             </span>
             <div class="log-box">
-              <button id="logActivity" class="log">LOG ACTIVITY</button>
+              <button id="logActivity" class="log invisibility">LOG ACTIVITY</button>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           </section>
         </section>
       </aside>
-    </div>
+    </main>
   </body>
   <script type="text/javascript" src="main.js"></script>
   <script type="text/javascript" src="activity.js"></script>
