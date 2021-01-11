@@ -26,7 +26,6 @@ class Activity {
   };
 
   countdown() {
-    startTimer.removeEventListener('click', starter);
     var that = this;
     var interval = setInterval(function() {
         that.stopwatch += 1;
@@ -36,9 +35,7 @@ class Activity {
           clearInterval(interval);
           clockTime.innerText = '00:00';
           that.markComplete();
-          showMessage();
           startToComplete();
-          buttonLog.classList.remove('invisibility');
         }
     }, 1000);
   }
