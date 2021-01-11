@@ -43,14 +43,27 @@ buttonStart.addEventListener('click', showActivity);
 startTimer.addEventListener('click', starter);
 buttonLog.addEventListener('click', pressLog);
 buttonNewActivity.addEventListener('click', goHome);
+window.addEventListener('load',loadActivities)
 
 var currentActivity = '';
 var previousActivities = [];
 
 function saveActivities() {
   currentActivity.saveToStorage()
-  previousActivities.unshift(currentActivity.id)
-  
+  previousActivities.push(currentActivity.id)
+  var activityIDs = JSON.stringify(previousActivities)
+  localStorage.setItem('yourPastActivities', activityIDs);
+}
+
+function loadActivities() {
+  if (localStorage.getItem('yourPastActivities') != null) {
+    previousActivities = JSON.parse(localStorage.getItem('yourPastActivities'))
+    for (var i = 0; i < previousActivities.length; i++) {
+      currentActivity = JSON.parse(localStorage.getItem(previousActivities[i]));
+      addCard()
+    }
+    currentActivity = ''
+  }
 }
 
 
@@ -108,7 +121,6 @@ function goHome() {
 
 function starter() {
 currentActivity.countdown();
-console.log('test');
 }
 
 function clearInputs() {
