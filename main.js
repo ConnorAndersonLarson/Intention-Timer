@@ -39,12 +39,40 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
-buttonLog.addEventListener('click', logTheActivity);
+startTimer.addEventListener('click', starter);
+buttonLog.addEventListener('click', pressLog);
 buttonNewActivity.addEventListener('click', goHome);
-startTimer.addEventListener('click', starter)
 
 var currentActivity = '';
 var previousActivities = [];
+
+
+ function pressLog() {
+   startTimer.addEventListener('click', starter);
+   logTheActivity();
+}
+
+function showMessage() {
+  var clock = document.querySelector('#clockTime');
+  var category = categoryButtonFinder();
+  var color = '';
+  if(category === 'Study') {
+    color = 'green';
+  } else if (category === 'Meditate') {
+    color = 'purple';
+  } else if (category === 'Exercise') {
+    color = 'orange';
+  }
+  clock.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clock.classList.remove('min');
+  clock.classList.add('inspiration')
+  startTimer.addEventListener('click', starter);
+}
+
+function getRandomMessage(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
 
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
@@ -109,6 +137,7 @@ function logTheActivity() {
     show([formNewActivity, buttonNewActivity]);
     addCard();
     clearInputs();
+
 function starter() {
   currentActivity.countdown();
   console.log('test');

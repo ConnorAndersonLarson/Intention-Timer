@@ -220,9 +220,27 @@ border: 2px solid #FFF;
 
 .clock-visual {
   display: flex;
+  box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
 }
 
+.inspiration {
+  height: 100px;
+  margin: 0;
+}
+
+.message {
+  border: none;
+  margin: 0;
+  padding-top: 0px;
+  font-size: 125%;
+  font-weight: bolder;
+  transform: scaleY(1.1);
+}
+
+
 .timer {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: #46424D;
@@ -246,12 +264,14 @@ font-weight: bolder;
 transform: scaleY(1.1);
 }
 
+
 .min {
   margin: 0;
   font-size: 500%;
   color: #FFF;
   font-family: 'Arial';
   font-weight: 800;
+  height: 100px;
 }
 
 
@@ -296,6 +316,7 @@ transform: scaleY(1.1);
 .inner-circle > p {
   cursor: pointer;
 }
+
 
 .log-box {
   display: flex;

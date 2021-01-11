@@ -35,14 +35,12 @@ class Activity {
         if (that.stopwatch > that.timeLimit) {
           clearInterval(interval);
           clockTime.innerText = '00:00';
-          buttonLog.classList.remove('invisibility');
           that.markComplete();
-          alert('You be done ya nerd.');
+          showMessage();
+          buttonLog.classList.remove('invisibility');
         }
     }, 1000);
   }
-
-
 
   markComplete() {
     this.completed = true;
