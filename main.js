@@ -62,10 +62,10 @@ function loadActivities() {
       currentActivity = JSON.parse(localStorage.getItem(previousActivities[i]));
       addCard()
     }
+    hide([document.querySelector('#noLog')]);
     currentActivity = ''
   }
 }
-
 
  function pressLog() {
    startTimer.addEventListener('click', starter);
@@ -137,11 +137,11 @@ function addCard() {
   newCard.innerHTML += `
   <section id="pastActivitiesCard" class="new-card">
     <section class="new-card-text-box">
-      <g class="card-category">${currentActivity.category}</g>
-      <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
-      <section>
-        <g class="card-accomp">${currentActivity.description}</g>
-      </section>  
+        <section class="text-box-baby">
+          <g class="card-category">${currentActivity.category}</g>
+          <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+        </section>
+      <g class="card-accomp">${currentActivity.description}</g>
     </section>
     <section id="card-color" class="card-color-container">
       <section id="box1" class="card-color-tag-${currentActivity.category.toLowerCase()}">
