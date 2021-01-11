@@ -46,7 +46,7 @@ class Activity {
 
   saveToStorage() {
     var savedActivity = JSON.stringify(this);
-    localStorage.setItem(this.id, savedActivity)
+    localStorage.setItem(this.id, savedActivity);
   }
 
 

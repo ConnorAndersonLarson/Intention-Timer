@@ -1,3 +1,6 @@
+var currentActivity = '';
+var previousActivities = [];
+
 var buttonStudy = document.querySelector('#study');
 var buttonMeditate = document.querySelector('#meditate');
 var buttonExercise = document.querySelector('#exercise');
@@ -28,10 +31,11 @@ var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
 var newCard = document.querySelector('#pastActivitiesPage');
 var noLog = document.querySelector('#noLog');
-var startTimer = document.querySelector('#circleText')
-var buttonLog = document.querySelector('#logActivity')
-var clockNumbers = document.querySelector('#clockTime')
+var startTimer = document.querySelector('#circleText');
+var buttonLog = document.querySelector('#logActivity');
+var clockNumbers = document.querySelector('#clockTime');
 
+window.addEventListener('load',loadActivities);
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -43,20 +47,16 @@ buttonStart.addEventListener('click', showActivity);
 startTimer.addEventListener('click', starter);
 buttonLog.addEventListener('click', pressLog);
 buttonNewActivity.addEventListener('click', goHome);
-window.addEventListener('load',loadActivities)
-
-var currentActivity = '';
-var previousActivities = [];
 
 function loadActivities() {
   if (localStorage.getItem('yourPastActivities') != null) {
     previousActivities = JSON.parse(localStorage.getItem('yourPastActivities'))
     for (var i = 0; i < previousActivities.length; i++) {
       currentActivity = JSON.parse(localStorage.getItem(previousActivities[i]));
-      addCard()
+      addCard();
     }
     hide([document.querySelector('#noLog')]);
-    currentActivity = ''
+    currentActivity = '';
   }
 }
 
@@ -136,7 +136,6 @@ function clock(accomp, min, sec) {
   clockAccomp.innerText = `${accomp}`;
 }
 
-
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
     toggle([circleOrange]);
@@ -164,7 +163,7 @@ function showMessage() {
   }
   clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
   clockNumbers.classList.remove('min');
-  clockNumbers.classList.add('inspiration')
+  clockNumbers.classList.add('inspiration');
   startTimer.addEventListener('click', starter);
 }
 
@@ -185,14 +184,14 @@ function pressLog() {
   clockNumbers.classList.add('min');
   clockNumbers.classList.remove('inspiration');
   buttonLog.classList.add('invisibility');
-  saveActivities()
+  saveActivities();
   logTheActivity();
 }
 
 function saveActivities() {
-  currentActivity.saveToStorage()
-  previousActivities.push(currentActivity.id)
-  var activityIDs = JSON.stringify(previousActivities)
+  currentActivity.saveToStorage();
+  previousActivities.push(currentActivity.id);
+  var activityIDs = JSON.stringify(previousActivities);
   localStorage.setItem('yourPastActivities', activityIDs);
 }
 
@@ -200,7 +199,7 @@ function logTheActivity() {
   if (!noLog.classList.contains('hidden')) {
     hide([noLog]);
   }
-    hide([clockForm])
+    hide([clockForm]);
     show([formNewActivity, buttonNewActivity]);
     addCard();
     clearInputs();
@@ -227,13 +226,12 @@ function addCard() {
 function clearInputs() {
   var allInputs = document.querySelectorAll('input');
   for (var i = 0; i < allInputs.length; i++) {
-    allInputs[i].value = ""
+    allInputs[i].value = "";
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
   }
 }
-
 
 function buttonError() {
   buttonStart.classList.toggle('backgroundColor');
