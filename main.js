@@ -41,11 +41,12 @@ var currentActivity = '';
 var previousActivities = [];
 
 // function pressLog() {
+//   startTimer.addEventListener('click', starter);
 //   showMessage();
 // }
 
 function showMessage() {
-  var clock = document.querySelector('#inspireQuote');// ('#clockTime');
+  var clock = document.querySelector('#clockTime');
   var category = categoryButtonFinder();
   var color = '';
   if(category === 'Study') {
@@ -56,9 +57,8 @@ function showMessage() {
     color = 'orange';
   }
   clock.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
-  clock.classList.remove('hidden');
-  clockTime.classList.add('hidden');
-
+  clock.classList.remove('min');
+  clock.classList.add('inspiration')
   startTimer.addEventListener('click', starter);
 }
 
