@@ -1,11 +1,11 @@
 class Activity {
   constructor(category, description, minutes, seconds) {
+    this.id = Date.now();
     this.category = category;
     this.description = description;
     this.minutes = minutes;
     this.seconds = seconds;
     this.completed = false;
-    this.id = Date.now();
     this.timerInterval = null;
     this.stopwatch = 0;
     this.timeLimit = parseInt(seconds) + (parseInt(minutes) * 60);
@@ -47,8 +47,10 @@ class Activity {
   }
 
   saveToStorage() {
-
+    var savedActivity = JSON.stringify(this);
+    localStorage.setItem(this.id, savedActivity)
   }
+
 
 }
 

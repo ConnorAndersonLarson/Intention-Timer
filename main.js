@@ -47,11 +47,18 @@ buttonNewActivity.addEventListener('click', goHome);
 var currentActivity = '';
 var previousActivities = [];
 
+function saveActivities() {
+  currentActivity.saveToStorage()
+  previousActivities.unshift(currentActivity.id)
+  
+}
+
 
  function pressLog() {
    startTimer.addEventListener('click', starter);
    clockNumbers.classList.add('min')
    clockNumbers.classList.remove('inspiration')
+   saveActivities()
    logTheActivity();
 }
 
@@ -115,16 +122,15 @@ function clearInputs() {
 }
 
 function addCard() {
-  var color = categoryButtonFinder();
   newCard.innerHTML += `
   <section id="pastActivitiesCard" class="new-card">
     <section class="new-card-text-box">
-      <g class="card-category">${categoryButtonFinder()}</g>
-      <g class="card-time">${minutes.value} MIN ${seconds.value} SECONDS</g>
-      <g class="card-accomp">${userAccomplish.value}</g>
+      <g class="card-category">${currentActivity.category}</g>
+      <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+      <g class="card-accomp">${currentActivity.description}</g>
     </section>
     <section id="card-color" class="card-color-container">
-      <section id="box1" class="card-color-tag-${color.toLowerCase()}">
+      <section id="box1" class="card-color-tag-${currentActivity.category.toLowerCase()}">
       </section>
     </section>
   </section>
@@ -132,7 +138,6 @@ function addCard() {
 }
 
 function logTheActivity() {
-  previousActivities.push(currentActivity);
   if (!noLog.classList.contains('hidden')) {
     hide([noLog]);
   }
