@@ -99,7 +99,7 @@ function getRandomMessage(array) {
 
 function startToComplete() {
   var startButton = document.querySelector("#startButtonText");
-  startButton.innerText = `${'COMPLETE!'}`;
+  startButton.innerText = 'COMPLETE!';
 }
 
 function hide(elements) {
