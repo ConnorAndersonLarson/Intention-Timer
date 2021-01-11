@@ -68,9 +68,11 @@ function loadActivities() {
 }
 
  function pressLog() {
+   changeCircleColor(currentActivity.category);
    startTimer.addEventListener('click', starter);
-   clockNumbers.classList.add('min')
-   clockNumbers.classList.remove('inspiration')
+   clockNumbers.classList.add('min');
+   clockNumbers.classList.remove('inspiration');
+   buttonLog.classList.add('invisibility');
    saveActivities()
    logTheActivity();
 }
@@ -174,11 +176,11 @@ function clock(accomp, min, sec) {
 
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
-    show([circleOrange]);
+    toggle([circleOrange]);
   } else if (userCategory === 'Study') {
-    show([circleGreen]);
+    toggle([circleGreen]);
   } else if (userCategory === 'Meditate') {
-    show([circlePurple]);
+    toggle([circlePurple]);
   }
 }
 
@@ -192,7 +194,7 @@ var userSeconds = seconds.value;
     hide([form]);
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds);
-    changeCircleColor(userCategory);
+    changeCircleColor(currentActivity.category);
   } else {
     buttonError();
   }
