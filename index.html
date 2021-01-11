@@ -62,23 +62,29 @@
             </g>
             </svg>
             <span id="circleText" class="inner-circle">
-              <p>START</p>
+              <p id="startButtonText">START</p>
             </span>
             <div class="log-box">
-              <button id="logActivity" class="log invisibility">LOG ACTIVITY</button>
+              <button id="logActivity" class="log">LOG ACTIVITY</button>
             </div>
           </div>
         </div>
-      </section>
-      <section class="past-activities">
-        <h2>Past Activities</h2>
-        <section>
-          <p>You haven't logged any activities yet.</p>
-          <p>Complete the form to the left to get started!</p>
+        <section id="activateNew" class="new-activity-form hidden">
+            <button id="newActivityButton" class="new-activity-button">CREATE A NEW ACTIVITY</button>
         </section>
       </section>
+      <aside class="past-activities">
+        <h2>Past Activities</h2>
+        <section id="pastActivitiesPage" class="past-activities-box ">
+          <section id="noLog">
+            <p>You haven't logged any activities yet.</p>
+            <p>Complete the form to the left to get started!</p>
+          </section>
+        </section>
+      </aside>
     </div>
   </body>
   <script type="text/javascript" src="main.js"></script>
   <script type="text/javascript" src="activity.js"></script>
+  <script type="text/javascript" src="data.js"></script>
 </html>

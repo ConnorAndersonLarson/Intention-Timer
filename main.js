@@ -1,6 +1,9 @@
 var buttonStudy = document.querySelector('#study');
 var buttonMeditate = document.querySelector('#meditate');
 var buttonExercise = document.querySelector('#exercise');
+var buttonLog = document.querySelector('#logActivity');
+var buttonNewActivity = document.querySelector('#newActivityButton');
+var buttonStart = document.querySelector('#start');
 var imageStudy = document.querySelector('.study-image');
 var imageMeditate = document.querySelector('.meditate-image');
 var imageExercise = document.querySelector('.exercise-image');
@@ -10,9 +13,9 @@ var imageExerciseActive = document.querySelector('.exercise-active');
 var userAccomplish = document.querySelector('#accomplish');
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
-var buttonStart = document.querySelector('#start');
 var form = document.querySelector('#activityForm');
 var clockForm = document.querySelector('#clockForm');
+var formNewActivity = document.querySelector('#activateNew')
 var categoryError = document.querySelector('#buttonError');
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
@@ -23,8 +26,11 @@ var clockAccomp = document.querySelector('#clockAccomp');
 var circlePurple = document.querySelector('.timer-meditate');
 var circleOrange = document.querySelector('.timer-exercise');
 var circleGreen = document.querySelector('.timer-study');
+var newCard = document.querySelector('#pastActivitiesPage');
+var noLog = document.querySelector('#noLog');
 var startTimer = document.querySelector('#circleText')
 var buttonLog = document.querySelector('#logActivity')
+var clockNumbers = document.querySelector('#clockTime')
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
@@ -34,18 +40,123 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
-startTimer.addEventListener('click', starter)
+startTimer.addEventListener('click', starter);
+buttonLog.addEventListener('click', pressLog);
+buttonNewActivity.addEventListener('click', goHome);
 
 var currentActivity = '';
 var previousActivities = [];
 
+function saveActivities() {
+  currentActivity.saveToStorage()
+  previousActivities.unshift(currentActivity.id)
+
+}
+
+
+ function pressLog() {
+   startTimer.addEventListener('click', starter);
+   clockNumbers.classList.add('min')
+   clockNumbers.classList.remove('inspiration')
+   saveActivities()
+   logTheActivity();
+}
+
+function showMessage() {
+  var category = categoryButtonFinder();
+  var color = '';
+  if(category === 'Study') {
+    color = 'green';
+  } else if (category === 'Meditate') {
+    color = 'purple';
+  } else if (category === 'Exercise') {
+    color = 'orange';
+  }
+  clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clockNumbers.classList.remove('min');
+  clockNumbers.classList.add('inspiration')
+  startTimer.addEventListener('click', starter);
+}
+
+function getRandomMessage(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function startToComplete() {
+  var startButton = document.querySelector("#startButtonText");
+  startButton.innerText = `${'COMPLETE!'}`;
+}
+
+function hide(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('hidden');
+  }
+}
+
+function show(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('hidden');
+  }
+}
+
+function toggle(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.toggle('hidden');
+  }
+}
+
+function goHome() {
+  hide([buttonNewActivity, formNewActivity]);
+  show([form]);
+}
+
+function starter() {
+currentActivity.countdown();
+console.log('test');
+}
+
+function clearInputs() {
+  var allInputs = document.querySelectorAll('input');
+  for (var i = 0; i < allInputs.length; i++) {
+    allInputs[i].value = ""
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
+  }
+}
+
+function addCard() {
+  newCard.innerHTML += `
+  <section id="pastActivitiesCard" class="new-card">
+    <section class="new-card-text-box">
+      <g class="card-category">${currentActivity.category}</g>
+      <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+      <g class="card-accomp">${currentActivity.description}</g>
+    </section>
+    <section id="card-color" class="card-color-container">
+      <section id="box1" class="card-color-tag-${currentActivity.category.toLowerCase()}">
+      </section>
+    </section>
+  </section>
+  `;
+}
+
+function logTheActivity() {
+  if (!noLog.classList.contains('hidden')) {
+    hide([noLog]);
+  }
+    hide([clockForm])
+    show([formNewActivity, buttonNewActivity]);
+    addCard();
+    clearInputs();
+
 function starter() {
   currentActivity.countdown();
-  console.log('test');
+  }
 }
 
 function clock(accomp, min, sec) {
-  clockForm.classList.remove('hidden');
+  show([clockForm]);
   clockTime.innerText = `${min}:${sec}`;
   clockAccomp.innerText = `${accomp}`;
 }
@@ -53,13 +164,14 @@ function clock(accomp, min, sec) {
 
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
-    circleOrange.classList.remove('hidden');
+    show([circleOrange]);
   } else if (userCategory === 'Study') {
-    circleGreen.classList.remove('hidden');
+    show([circleGreen]);
   } else if (userCategory === 'Meditate') {
-    circlePurple.classList.remove('hidden');
+    show([circlePurple]);
   }
 }
+
 
 function showActivity() {
 var userCategory = categoryButtonFinder();
@@ -67,7 +179,7 @@ var userDescription = userAccomplish.value;
 var userMinutes = minutes.value;
 var userSeconds = seconds.value;
   if (userCategory && userDescription && userMinutes && userSeconds) {
-    form.classList.add('hidden');
+    hide([form]);
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     clock(userDescription, userMinutes, userSeconds);
     changeCircleColor(userCategory);
@@ -88,8 +200,7 @@ function categoryButtonFinder() {
 
 function changeColorOrange() {
     buttonExercise.classList.toggle('orange');
-    imageExercise.classList.toggle('hidden');
-    imageExerciseActive.classList.toggle('hidden');
+    toggle([imageExercise, imageExerciseActive]);
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonExercise);
@@ -97,8 +208,7 @@ function changeColorOrange() {
 
 function changeColorGreen() {
     buttonStudy.classList.toggle('green');
-    imageStudy.classList.toggle('hidden');
-    imageStudyActive.classList.toggle('hidden');
+    toggle([imageStudy, imageStudyActive]);
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
     unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
     catSelectionError(buttonStudy);
@@ -106,8 +216,7 @@ function changeColorGreen() {
 
 function changeColorPurple() {
     buttonMeditate.classList.toggle('purple');
-    imageMeditateActive.classList.toggle('hidden');
-    imageMeditate.classList.toggle('hidden');
+    toggle([imageMeditateActive, imageMeditate]);
     unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
     unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
     catSelectionError(buttonMeditate);
@@ -115,10 +224,10 @@ function changeColorPurple() {
 
 function unselectButtons(selector1, selector2, border, color) {
   if (selector1.classList.contains('hidden')) {
-    selector1.classList.remove('hidden');
+    show([selector1]);
   }
   if (!selector2.classList.contains('hidden')) {
-    selector2.classList.toggle('hidden');
+    toggle([selector2]);
   }
   if (border.classList.contains(color)) {
     border.classList.toggle(color);

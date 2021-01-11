@@ -46,13 +46,6 @@ div {
   padding-top: 10px;
 }
 
-.past-activities {
-  width: 35%;
-  border-left: #46424D solid 4px;
-  padding: 25px;
-  padding-top: 10px;
-}
-
 .form {
   background-color: #46424D;
   height: 600px;
@@ -82,8 +75,6 @@ img {
 }
 
 .button-box > button {
-  /* color: #CBC9CF; */
-  /* border: 2px solid #FFF; */
   outline: none;
   display: flex;
   flex-direction: column;
@@ -146,12 +137,6 @@ border: 2px solid #FFF;
   outline: none;
 }
 
-p {
-  display: flex;
-  justify-content: center;
-  color: #CBC9CF;
-  margin: 10px;
-}
 
 .accomplish, .category {
   color: #FFF;
@@ -207,21 +192,64 @@ p {
   background-color: #db4d4b;
 }
 
-
-/* CLOCK STUFF */
-
-/* Sets the containers height and width */
-.clock-visual {
-  display: flex;
-}
-
-.timer {
+.new-activity-form {
   display: flex;
   flex-direction: column;
   background-color: #46424D;
   position: relative;
   height: 600px;
   width: 100%;
+  box-shadow: 7px 7px #26222D;
+}
+
+.new-activity-button {
+  align-self: center;
+  margin-top: 100px;
+  width: 300px;
+  height: 35px;
+  border-radius: 3px;
+  border: none;
+  background-color: #CBC9CF;
+  color: #2B2733;
+  font-size: 15px;
+  transform: scaleY(1.1);
+  outline: none;
+}
+/* CLOCK STUFF */
+
+
+.clock-visual {
+  display: flex;
+  box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
+}
+
+.inspiration {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin: 0;
+}
+
+.message {
+  border: none;
+  margin: 0;
+  padding-top: 0px;
+  font-size: 125%;
+  font-weight: bolder;
+  transform: scaleY(1.1);
+}
+
+
+.timer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #46424D;
+  position: relative;
+  height: 600px;
+  width: 100%;
+  box-shadow: 7px 7px #26222D;
 }
 
 .accomp-box {
@@ -238,21 +266,23 @@ font-weight: bolder;
 transform: scaleY(1.1);
 }
 
+
 .min {
   margin: 0;
   font-size: 500%;
   color: #FFF;
   font-family: 'Arial';
   font-weight: 800;
+  height: 100px;
 }
 
-/* Removes SVG styling that would hide the time label */
+
 .base-timer__circle {
   fill: none;
   stroke: none;
 }
 
-/* The SVG path that displays the timer's progress */
+
 .path-elapsed {
   stroke-width: 1px;
   stroke: white;
@@ -289,6 +319,7 @@ transform: scaleY(1.1);
   cursor: pointer;
 }
 
+
 .log-box {
   display: flex;
   height: 40%;
@@ -305,6 +336,111 @@ transform: scaleY(1.1);
   transform: scaleY(1.1);
   outline: none;
 }
+
+/* PAST ACTIVITIES */
+
+.past-activities {
+  width: 35%;
+  border-left: #46424D solid 4px;
+  padding: 25px;
+  padding-top: 10px;
+}
+
+p {
+display: flex;
+justify-content: center;
+color: #CBC9CF;
+margin: 10px;
+}
+
+.past-activities-box > p {
+  display: flex;
+  justify-content: center;
+  color: #CBC9CF;
+  margin: 10px;
+}
+
+.past-activities-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-card {
+  display: flex;
+  flex-direction: row;
+  color: #CBC9CF;
+  background-color: #46424D;
+  margin-top: -20px;
+  margin-left: -17%;
+  margin-bottom: 50px;
+  padding-left: 0px;
+  width: 133%;
+  height: 100px;
+  box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
+}
+
+.new-card-text-box {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-around;
+  width: 70%;
+  margin-left: 10px;
+}
+
+.card-category {
+  color: #FFF;
+}
+
+.card-time {
+
+}
+
+.card-accomp {
+
+}
+
+.card-color-container {
+  display: flex;
+  justify-content: flex-end;
+  height:60px;
+  width: 30%;
+}
+
+.card-color-tag-study {
+  align-self: flex-start;
+  height: 30px;
+  width: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #B3FD78;
+  border-radius: 5px;
+}
+
+.card-color-tag-meditate {
+  align-self: flex-start;
+  height: 30px;
+  width: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #C278FD;
+  border-radius: 5px;
+}
+
+.card-color-tag-exercise {
+  align-self: flex-start;
+  height: 30px;
+  width: 5px;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #FD8078;
+  border-radius: 5px;
+}
+
+
+/* SHADOW CLASSES!! */
 
 .hidden {
   display: none;
