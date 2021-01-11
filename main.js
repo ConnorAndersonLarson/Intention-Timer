@@ -30,6 +30,7 @@ var newCard = document.querySelector('#pastActivitiesPage');
 var noLog = document.querySelector('#noLog');
 var startTimer = document.querySelector('#circleText')
 var buttonLog = document.querySelector('#logActivity')
+var clockNumbers = document.querySelector('#clockTime')
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
@@ -49,11 +50,12 @@ var previousActivities = [];
 
  function pressLog() {
    startTimer.addEventListener('click', starter);
+   clockNumbers.classList.add('min')
+   clockNumbers.classList.remove('inspiration')
    logTheActivity();
 }
 
 function showMessage() {
-  var clock = document.querySelector('#clockTime');
   var category = categoryButtonFinder();
   var color = '';
   if(category === 'Study') {
@@ -63,9 +65,9 @@ function showMessage() {
   } else if (category === 'Exercise') {
     color = 'orange';
   }
-  clock.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
-  clock.classList.remove('min');
-  clock.classList.add('inspiration')
+  clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clockNumbers.classList.remove('min');
+  clockNumbers.classList.add('inspiration')
   startTimer.addEventListener('click', starter);
 }
 
@@ -130,6 +132,7 @@ function addCard() {
 }
 
 function logTheActivity() {
+  previousActivities.push(currentActivity);
   if (!noLog.classList.contains('hidden')) {
     hide([noLog]);
   }
@@ -140,7 +143,6 @@ function logTheActivity() {
 
 function starter() {
   currentActivity.countdown();
-  console.log('test');
   }
 }
 
