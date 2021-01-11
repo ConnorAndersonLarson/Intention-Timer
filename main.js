@@ -30,6 +30,7 @@ var newCard = document.querySelector('#pastActivitiesPage');
 var noLog = document.querySelector('#noLog');
 var startTimer = document.querySelector('#circleText')
 var buttonLog = document.querySelector('#logActivity')
+var clockNumbers = document.querySelector('#clockTime')
 
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
@@ -39,12 +40,61 @@ buttonMeditate.addEventListener('click', changeColorPurple);
 buttonStudy.addEventListener('click', changeColorGreen);
 buttonExercise.addEventListener('click', changeColorOrange);
 buttonStart.addEventListener('click', showActivity);
-buttonLog.addEventListener('click', logTheActivity);
+startTimer.addEventListener('click', starter);
+buttonLog.addEventListener('click', pressLog);
 buttonNewActivity.addEventListener('click', goHome);
-startTimer.addEventListener('click', starter)
+window.addEventListener('load',loadActivities)
 
 var currentActivity = '';
 var previousActivities = [];
+
+function saveActivities() {
+  currentActivity.saveToStorage()
+  previousActivities.push(currentActivity.id)
+  var activityIDs = JSON.stringify(previousActivities)
+  localStorage.setItem('yourPastActivities', activityIDs);
+}
+
+function loadActivities() {
+  if (localStorage.getItem('yourPastActivities') != null) {
+    previousActivities = JSON.parse(localStorage.getItem('yourPastActivities'))
+    for (var i = 0; i < previousActivities.length; i++) {
+      currentActivity = JSON.parse(localStorage.getItem(previousActivities[i]));
+      addCard()
+    }
+    currentActivity = ''
+  }
+}
+
+
+ function pressLog() {
+   startTimer.addEventListener('click', starter);
+   clockNumbers.classList.add('min')
+   clockNumbers.classList.remove('inspiration')
+   saveActivities()
+   logTheActivity();
+}
+
+function showMessage() {
+  var category = categoryButtonFinder();
+  var color = '';
+  if(category === 'Study') {
+    color = 'green';
+  } else if (category === 'Meditate') {
+    color = 'purple';
+  } else if (category === 'Exercise') {
+    color = 'orange';
+  }
+  clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clockNumbers.classList.remove('min');
+  clockNumbers.classList.add('inspiration')
+  startTimer.addEventListener('click', starter);
+}
+
+function getRandomMessage(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
 
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
@@ -71,7 +121,6 @@ function goHome() {
 
 function starter() {
 currentActivity.countdown();
-console.log('test');
 }
 
 function clearInputs() {
@@ -85,18 +134,17 @@ function clearInputs() {
 }
 
 function addCard() {
-  var color = categoryButtonFinder();
   newCard.innerHTML += `
   <section id="pastActivitiesCard" class="new-card">
     <section class="new-card-text-box">
-      <section class="text-box-baby">
-        <g class="card-category">${categoryButtonFinder()}</g>
-        <g class="card-time">${minutes.value} MIN ${seconds.value} SECONDS</g>
-      </section>
-      <g class="card-accomp">${userAccomplish.value}</g>
+      <g class="card-category">${currentActivity.category}</g>
+      <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+      <section>
+        <g class="card-accomp">${currentActivity.description}</g>
+      </section>  
     </section>
     <section id="card-color" class="card-color-container">
-      <section id="box1" class="card-color-tag-${color.toLowerCase()}">
+      <section id="box1" class="card-color-tag-${currentActivity.category.toLowerCase()}">
       </section>
     </section>
   </section>
@@ -111,9 +159,9 @@ function logTheActivity() {
     show([formNewActivity, buttonNewActivity]);
     addCard();
     clearInputs();
+
 function starter() {
   currentActivity.countdown();
-  console.log('test');
   }
 }
 

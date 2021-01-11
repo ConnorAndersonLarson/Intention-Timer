@@ -241,10 +241,30 @@ border: 2px solid #FFF;
   display: flex;
   height: 100%;
   width: 100%;
+  box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
 }
+
+.inspiration {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin: 0;
+}
+
+.message {
+  border: none;
+  margin: 0;
+  padding-top: 0px;
+  font-size: 125%;
+  font-weight: bolder;
+  transform: scaleY(1.1);
+}
+
 
 .timer {
   box-sizing: border-box;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   background-color: #46424D;
@@ -263,12 +283,14 @@ font-weight: bolder;
 transform: scaleY(1.1);
 }
 
+
 .min {
   margin: 0;
   font-size: 100px;
   color: #FFF;
   font-family: 'Arial';
   font-weight: 800;
+  height: 100px;
 }
 
 
@@ -314,6 +336,7 @@ transform: scaleY(1.1);
 .inner-circle > p {
   cursor: pointer;
 }
+
 
 .log-box {
   display: flex;
