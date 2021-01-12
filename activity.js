@@ -31,9 +31,10 @@ class Activity {
         that.stopwatch += 1;
         that.remainingTime = that.timeLimit - that.stopwatch;
         clockTime.innerText = that.formatClock();
-        that.circleCountdown()
+        that.circleCountdown(220)
         if (that.stopwatch > that.timeLimit) {
           clearInterval(interval);
+          that.circleCountUp()
           clockTime.innerText = '00:00';
           that.markComplete();
           startToComplete();
@@ -41,10 +42,25 @@ class Activity {
     }, 1000);
   }
 
-  circleCountdown() {
-    var circleLength = 220;
-    var circleTimer = `${((this.remainingTime/this.timeLimit) * circleLength).toFixed(0)} 220`;
+  circleCountdown(circleLength) {
+    var circleTimer = `${((this.remainingTime/this.timeLimit) * 220).toFixed(0)} ${circleLength}`;
     circleTime.setAttribute("stroke-dasharray", circleTimer);
+  }
+
+  circleCountUp() {
+    var that = this;
+    var timehold = this.stopwatch
+    var limitHold = this.timeLimit
+    var circleInterval = setInterval(function() {
+      that.stopwatch -= 1;
+      that.remainingTime = that.timeLimit - that.stopwatch;
+      that.circleCountdown(73.3)
+      if (that.stopwatch === 0) {
+        clearInterval(circleInterval);
+        this.stopwatch = timehold;
+        this.timeLimit = limitHold
+      }
+    }, 100)
   }
 
   markComplete() {
