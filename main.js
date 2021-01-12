@@ -151,6 +151,7 @@ function changeCircleColor(userCategory) {
 function starter() {
 startTimer.removeEventListener('click', starter);
 currentActivity.countdown();
+startButton.innerText = '';
 }
 
 function startToComplete() {
