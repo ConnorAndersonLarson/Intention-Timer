@@ -18,7 +18,7 @@
 
 ## How to Use:
 
-<img src"./walkthrough-images/step1.png"
+<img src"./walkthrough-images/step1.png">
 
 * First you will want to choose the category of your intention. Within this category, you will want to establish what you would like to accomplish during your time. Decide on a time frame for this accomplishment, and then click the 'START ACTIVITY' button.
 
