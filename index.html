@@ -30,28 +30,28 @@
             <img class="error-image" src="./assets/warning.svg">
             <h4>A description is required.</h4>
           </section>
-          <div class="time-box">
-            <div class="minute-box">
+          <section class="time-box">
+            <section class="minute-box">
               <label>Minutes</label>
               <input id="minutes" class="user-minutes" type="text">
               <section class="error invisibility" id="minutesError">
                 <img class="error-image" src="./assets/warning.svg">
                 <h4>Please input a numerical value.</h4>
               </section>
-            </div>
-            <div class="seconds-box">
+            </section>
+            <section class="seconds-box">
               <label>Seconds</label>
               <input id="seconds" class="user-seconds" type="text">
               <section class="error invisibility" id="secondsError">
                 <img class="error-image" src="./assets/warning.svg">
                 <h4>Please input a numerical value.</h4>
               </section>
-            </div>
-          </div>
+            </section>
+          </section>
           <button id="start" class="start-activity">START ACTIVITY</button>
         </section>
-        <div id="clockForm" class ="clock-visual hidden">
-          <div class="timer">
+        <section id="clockForm" class ="clock-visual hidden">
+          <section class="timer">
             <p id="clockAccomp" class="accomp">${accomp}</p>
             <p id="clockTime" class="min">${min}:${sec}</p>
             <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> -->
@@ -67,8 +67,8 @@
             <div class="log-box">
               <button id="logActivity" class="log invisibility">LOG ACTIVITY</button>
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
         <section id="activateNew" class="new-activity-form hidden">
             <button id="newActivityButton" class="new-activity-button">CREATE A NEW ACTIVITY</button>
         </section>
@@ -76,7 +76,7 @@
       <aside class="past-activities">
         <h2>Past Activities</h2>
         <section id="pastActivitiesPage" class="past-activities-box ">
-          <section id="noLog">
+          <section id="noLog" class="not-logged">
             <p>You haven't logged any activities yet.</p>
             <p>Complete the form to the left to get started!</p>
           </section>

@@ -4,6 +4,7 @@ var buttonExercise = document.querySelector('#exercise');
 var buttonLog = document.querySelector('#logActivity');
 var buttonNewActivity = document.querySelector('#newActivityButton');
 var buttonStart = document.querySelector('#start');
+var buttonStartText = document.querySelector("#startButtonText");
 var imageStudy = document.querySelector('.study-image');
 var imageMeditate = document.querySelector('.meditate-image');
 var imageExercise = document.querySelector('.exercise-image');
@@ -73,6 +74,7 @@ function loadActivities() {
    clockNumbers.classList.add('min');
    clockNumbers.classList.remove('inspiration');
    buttonLog.classList.add('invisibility');
+   buttonStartText.innerText = 'START'
    saveActivities()
    logTheActivity();
 }
@@ -98,8 +100,7 @@ function getRandomMessage(array) {
 }
 
 function startToComplete() {
-  var startButton = document.querySelector("#startButtonText");
-  startButton.innerText = 'COMPLETE!';
+  buttonStartText.innerText = 'COMPLETE!';
 }
 
 function hide(elements) {

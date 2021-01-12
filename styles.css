@@ -1,17 +1,7 @@
 html {
   height: 100%;
-  /* max-height: 972px; */
   overflow: hidden;
 }
-
-/* .scroll-bar {
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-} */
-
-/* .scroll-bar::-webkit-scrollbar {
-  display: none;
-} */
 
 body {
   background-color: #2B2733;
@@ -46,16 +36,12 @@ main {
   height: inherit;
 }
 
-div {
-  display: flex;
-  justify-content: space-around;
-  height: inherit;
-}
-
 .title {
   color: #FFF;
   letter-spacing: 1.6px;
 }
+
+                        /* NEW ACTIVITY SECTION */
 
 .new-activity {
   box-sizing: border-box;
@@ -76,7 +62,6 @@ div {
   align-items: flex-start;
   justify-content: space-around;
   padding: 50px 140px 50px 140px;
-  /* max-height: 900px */
 }
 
 .button-box {
@@ -147,11 +132,11 @@ border: 2px solid #FFF;
 .start-activity {
   align-self: flex-end;
   width: 30%;
-  height: 110px;
+  height: 7%;
   border-radius: 3px;
   border: none;
-  background-color: #CBC9CF;
-  color: #2B2733;
+  background-color: #FFF;
+  color: #46424D;
   font-size: 15px;
   outline: none;
 }
@@ -219,23 +204,26 @@ border: 2px solid #FFF;
   height: 80%;
   width: 100%;
   box-shadow: 7px 7px #26222D;
+  border-radius: 5px;
 }
 
+
+
 .new-activity-button {
-  align-self: center;
+  align-self: bottom;
   margin-top: 100px;
   width: 300px;
   height: 35px;
   border-radius: 3px;
   border: none;
-  background-color: #CBC9CF;
-  color: #2B2733;
+  background-color: #FFF;
+  color: #46424D;
   font-size: 15px;
   transform: scaleY(1.1);
   outline: none;
 }
 
-/* CLOCK STUFF */
+                              /* CLOCK STYLE */
 
 .clock-visual {
   display: flex;
@@ -260,10 +248,8 @@ border: 2px solid #FFF;
   transform: scaleY(1.1);
 }
 
-
 .timer {
   box-sizing: border-box;
-  /* position: relative; */
   display: flex;
   flex-direction: column;
   background-color: #46424D;
@@ -271,15 +257,21 @@ border: 2px solid #FFF;
   height: 74.1%;
   width: 100%;
   box-shadow: 7px 7px #26222D;
-  /* max-height: 900px; */
+  border-radius: 5px;
+}
+
+.timer > p {
+  display: flex;
+  justify-content: center;
 }
 
 .accomp {
-margin: 0;
-padding-top: 60px;
-font-size: 125%;
-font-weight: bolder;
-transform: scaleY(1.1);
+  margin: 0;
+  color: #CBC9CF;
+  padding-top: 60px;
+  font-size: 125%;
+  font-weight: bolder;
+  transform: scaleY(1.1);
 }
 
 
@@ -321,7 +313,7 @@ transform: scaleY(1.1);
 
 .inner-circle {
   position: absolute;
-  height: 117%;
+  height: 115%;
   width: 100%;
   top: 0;
   display: flex;
@@ -334,27 +326,35 @@ transform: scaleY(1.1);
 
 .inner-circle > p {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  color: #CBC9CF;
+  margin: 10px;
 }
-
 
 .log-box {
   display: flex;
-  height: 35%;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  height: 40%;
+  width: 25%;
 }
+
 .log {
   align-self: flex-start;
-  width: 30%;
-  height: 33%;
+  width: 100%;
+  height: 40%;
   border-radius: 3px;
   border: none;
-  background-color: #CBC9CF;
-  color: #2B2733;
+  background-color: #FFF;
+  color: #46424D;
   font-size: 15px;
   transform: scaleY(1.1);
   outline: none;
 }
 
-/* PAST ACTIVITIES */
+                        /* PAST ACTIVITIES */
 
 .past-activities::-webkit-scrollbar {
   display: none;
@@ -370,13 +370,6 @@ transform: scaleY(1.1);
   padding-top: 10px;
 }
 
-p {
-display: flex;
-justify-content: center;
-color: #CBC9CF;
-margin: 10px;
-}
-
 .past-activities-box > p {
   display: flex;
   justify-content: center;
@@ -388,8 +381,16 @@ margin: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* height: 80%; */
 }
+
+.not-logged > p {
+  display: flex;
+  justify-content: center;
+  color: #CBC9CF;
+  margin: 10px;
+}
+
+                      /* PAST ACTIVITY CARDS */
 
 .new-card {
   display: flex;
@@ -422,10 +423,6 @@ margin: 10px;
 
 .card-category {
   color: #FFF;
-}
-
-.card-time {
-
 }
 
 .card-accomp {
@@ -469,7 +466,7 @@ margin: 10px;
   border-radius: 5px;
 }
 
-/* SHADOW CLASSES!! */
+                          /* !!SHADOW CLASSES!! */
 
 .hidden {
   display: none;
@@ -479,9 +476,11 @@ margin: 10px;
   visibility: hidden;
 }
 
+                          /* MEDIA QUERIES */
+
 @media screen and (max-width: 1440px) {
   .inner-circle {
-    height: 120%;
+    height: 117%;
   }
 
   .new-activity-form {
@@ -497,16 +496,10 @@ margin: 10px;
 
 @media screen and (min-height: 1000px) {
   .inner-circle {
-    height: 112%;
+    height: 109%;
+  }
+
+  .timer {
+    height: 74.8%;
   }
 }
-
-/* Main background: #2B2733
-Text on main background: #CBC9CF
-Header, cards: #46424D
-Card shadow: #26222D
-Text on header and cards: #FFF
-Study: #B3FD78
-Meditate: #C278FD
-Exercise: #FD8078
-Error: #EFB7EC */
