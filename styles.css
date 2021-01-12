@@ -215,8 +215,6 @@ border: 2px solid #FFF;
   border-radius: 5px;
 }
 
-
-
 .new-activity-button {
   align-self: bottom;
   margin-top: 100px;
@@ -292,12 +290,10 @@ border: 2px solid #FFF;
   height: 100px;
 }
 
-
 .base-timer-circle {
   fill: none;
   stroke: none;
 }
-
 
 .path-elapsed {
   stroke-width: 1px;
