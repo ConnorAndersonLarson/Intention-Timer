@@ -26,9 +26,11 @@ var accompError = document.querySelector('#accomplishError');
 var categoryButtons = document.querySelector('.button-box');
 var clockTime = document.querySelector('#clockTime');
 var clockAccomp = document.querySelector('#clockAccomp');
-var circlePurple = document.querySelector('.timer-meditate');
-var circleOrange = document.querySelector('.timer-exercise');
-var circleGreen = document.querySelector('.timer-study');
+// var circlePurple = document.querySelector('.timer-meditate');
+// var circleOrange = document.querySelector('.timer-exercise');
+// var circleGreen = document.querySelector('.timer-study');
+var circleTime = document.querySelector('#baseTimerPath');
+var backgroundCircle = document.querySelector('#backgroundCircle')
 var newCard = document.querySelector('#pastActivitiesPage');
 var noLog = document.querySelector('#noLog');
 var startTimer = document.querySelector('#circleText');
@@ -124,6 +126,8 @@ var userSeconds = seconds.value;
   if (userCategory && userDescription && userMinutes && userSeconds) {
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     changeCircleColor(currentActivity.category);
+    toggle([backgroundCircle]);
+    toggle([circleTime]);
     clock(userDescription, userMinutes, userSeconds);
     hide([form]);
   } else {
@@ -139,11 +143,11 @@ function clock(accomp, min, sec) {
 
 function changeCircleColor(userCategory) {
   if (userCategory === 'Exercise') {
-    toggle([circleOrange]);
+    circleTime.classList.toggle('timer-exercise');
   } else if (userCategory === 'Study') {
-    toggle([circleGreen]);
+    circleTime.classList.toggle('timer-study');
   } else if (userCategory === 'Meditate') {
-    toggle([circlePurple]);
+    circleTime.classList.toggle('timer-meditate');
   }
 }
 
@@ -171,7 +175,6 @@ function showMessage() {
   clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
   clockNumbers.classList.remove('min');
   clockNumbers.classList.add('inspiration');
-  startTimer.addEventListener('click', starter);
 }
 
 function getRandomMessage(array) {
@@ -180,12 +183,19 @@ function getRandomMessage(array) {
 
 function pressLog() {
   changeCircleColor(currentActivity.category);
+  changeElements();
+  saveActivities();
+  logTheActivity();
+}
+
+function changeElements() {
   startTimer.addEventListener('click', starter);
   clockNumbers.classList.add('min');
   clockNumbers.classList.remove('inspiration');
   buttonLog.classList.add('invisibility');
-  saveActivities();
-  logTheActivity();
+  circleTime.classList.toggle('hidden')
+  backgroundCircle.classList.toggle('hidden')
+
 }
 
 function saveActivities() {

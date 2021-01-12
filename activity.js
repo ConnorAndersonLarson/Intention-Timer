@@ -31,13 +31,22 @@ class Activity {
         that.stopwatch += 1;
         that.remainingTime = that.timeLimit - that.stopwatch;
         clockTime.innerText = that.formatClock();
+        that.circleCountdown()
         if (that.stopwatch > that.timeLimit) {
           clearInterval(interval);
           clockTime.innerText = '00:00';
           that.markComplete();
+          // circleTime.classList.toggle('hidden')
+          // backgroundCircle.classList.toggle('hidden')
           startToComplete();
         }
     }, 1000);
+  }
+
+  circleCountdown() {
+    var circleLength = 220;
+    var circleTimer = `${((this.remainingTime/this.timeLimit) * circleLength).toFixed(0)} 220`;
+    circleTime.setAttribute("stroke-dasharray", circleTimer);
   }
 
   markComplete() {

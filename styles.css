@@ -299,23 +299,33 @@ transform: scaleY(1.1);
 }
 
 
-.path-elapsed {
+.timer-base {
   stroke-width: 1px;
-  stroke: white;
+  stroke: #2B2733;
+}
+
+.base-timer-svg {
+  transform: scaleX(-1);
+}
+
+.base-timer-path {
+  stroke-width: 1px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+
 }
 
 .timer-meditate {
-  stroke-width: 1px;
   stroke: #C278FD;
 }
 
 .timer-study {
-  stroke-width: 1px;
   stroke: #B3FD78;
 }
 
 .timer-exercise {
-  stroke-width: 1px;
   stroke: #FD8078;
 }
 
