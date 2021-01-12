@@ -189,44 +189,6 @@ function showMessage() {
 function getRandomMessage(array) {
   return Math.floor(Math.random() * array.length);
 }
-// 
-// <<<<<<< HEAD
-// function pressLog() {
-//   changeCircleColor(currentActivity.category);
-//   startTimer.addEventListener('click', starter);
-//   clockNumbers.classList.add('min');
-//   clockNumbers.classList.remove('inspiration');
-//   buttonLog.classList.add('invisibility');
-//   saveActivities();
-//   logTheActivity();
-// =======
-// function startToComplete() {
-//   buttonStartText.innerText = 'COMPLETE!';
-// }
-//
-// function hide(elements) {
-//   for (var i = 0; i < elements.length; i++) {
-//     elements[i].classList.add('hidden');
-//   }
-// }
-//
-// function show(elements) {
-//   for (var i = 0; i < elements.length; i++) {
-//     elements[i].classList.remove('hidden');
-//   }
-// }
-//
-// function toggle(elements) {
-//   for (var i = 0; i < elements.length; i++) {
-//     elements[i].classList.toggle('hidden');
-//   }
-// }
-//
-// function goHome() {
-//   hide([buttonNewActivity, formNewActivity]);
-//   show([form]);
-// >>>>>>> feature/logging-past-activities
-// }
 
 function saveActivities() {
   currentActivity.saveToStorage();
