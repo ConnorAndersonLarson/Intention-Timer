@@ -8,12 +8,12 @@ var buttonLog = document.querySelector('#logActivity');
 var buttonNewActivity = document.querySelector('#newActivityButton');
 var buttonStart = document.querySelector('#start');
 var buttonStartText = document.querySelector("#startButtonText");
-var imageStudy = document.querySelector('.study-image');
-var imageMeditate = document.querySelector('.meditate-image');
-var imageExercise = document.querySelector('.exercise-image');
-var imageStudyActive = document.querySelector('.study-active');
-var imageMeditateActive = document.querySelector('.meditate-active');
-var imageExerciseActive = document.querySelector('.exercise-active');
+var imageStudy = document.querySelector('#studyImage');
+var imageMeditate = document.querySelector('#meditateImage');
+var imageExercise = document.querySelector('#exerciseImage');
+var imageStudyActive = document.querySelector('#studyActive');
+var imageMeditateActive = document.querySelector('#meditateActive');
+var imageExerciseActive = document.querySelector('#exerciseActive');
 var userAccomplish = document.querySelector('#accomplish');
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
@@ -24,7 +24,7 @@ var categoryError = document.querySelector('#buttonError');
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
 var accompError = document.querySelector('#accomplishError');
-var categoryButtons = document.querySelector('.button-box');
+var categoryButtons = document.querySelector('#buttonBox');
 var clockTime = document.querySelector('#clockTime');
 var clockAccomp = document.querySelector('#clockAccomp');
 var circleTime = document.querySelector('#baseTimerPath');
@@ -36,7 +36,7 @@ var buttonLog = document.querySelector('#logActivity');
 var startButton = document.querySelector("#startButtonText");
 var allInputs = document.querySelectorAll('input');
 
-window.addEventListener('load',loadActivities);
+window.addEventListener('load', loadActivities);
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -192,9 +192,8 @@ function changeElements() {
   clockTime.classList.add('min');
   clockTime.classList.remove('inspiration');
   buttonLog.classList.add('invisibility');
-  circleTime.classList.toggle('hidden')
-  backgroundCircle.classList.toggle('hidden')
-
+  circleTime.classList.toggle('hidden');
+  backgroundCircle.classList.toggle('hidden');
 }
 
 function saveActivities() {

@@ -94,8 +94,8 @@ img {
 }
 
 .study {
-color: #CBC9CF;
-border: 2px solid #FFF;
+  color: #CBC9CF;
+  border: 2px solid #FFF;
 }
 
 .exercise {
@@ -113,7 +113,6 @@ border: 2px solid #FFF;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
 }
 
 .error {
@@ -281,7 +280,6 @@ border: 2px solid #FFF;
   transform: scaleY(1.1);
 }
 
-
 .min {
   margin: 0;
   font-size: 100px;
@@ -295,7 +293,6 @@ border: 2px solid #FFF;
   fill: none;
   stroke: none;
 }
-
 
 .timer-base {
   stroke-width: 1px;
@@ -312,7 +309,6 @@ border: 2px solid #FFF;
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;
-
 }
 
 .timer-meditate {
@@ -375,6 +371,7 @@ border: 2px solid #FFF;
 .past-activities::-webkit-scrollbar {
   display: none;
 }
+
 .past-activities {
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -512,7 +509,6 @@ border: 2px solid #FFF;
   .timer {
     height: 78.6%;
   }
-
 }
 
 @media screen and (min-height: 1000px) {
