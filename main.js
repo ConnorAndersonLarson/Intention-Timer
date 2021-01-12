@@ -201,8 +201,8 @@ function pressLog() {
 
 function changeElements() {
   startTimer.addEventListener('click', starter);
-  clockNumbers.classList.add('min');
-  clockNumbers.classList.remove('inspiration');
+  clockTime.classList.add('min');
+  clockTime.classList.remove('inspiration');
   buttonLog.classList.add('invisibility');
   circleTime.classList.toggle('hidden')
   backgroundCircle.classList.toggle('hidden')
