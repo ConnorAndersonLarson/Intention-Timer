@@ -36,8 +36,6 @@ class Activity {
           clearInterval(interval);
           clockTime.innerText = '00:00';
           that.markComplete();
-          // circleTime.classList.toggle('hidden')
-          // backgroundCircle.classList.toggle('hidden')
           startToComplete();
         }
     }, 1000);
@@ -60,5 +58,3 @@ class Activity {
 
 
 }
-
-// module.exports = Activity;

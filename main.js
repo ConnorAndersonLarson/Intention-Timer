@@ -27,9 +27,6 @@ var accompError = document.querySelector('#accomplishError');
 var categoryButtons = document.querySelector('.button-box');
 var clockTime = document.querySelector('#clockTime');
 var clockAccomp = document.querySelector('#clockAccomp');
-// var circlePurple = document.querySelector('.timer-meditate');
-// var circleOrange = document.querySelector('.timer-exercise');
-// var circleGreen = document.querySelector('.timer-study');
 var circleTime = document.querySelector('#baseTimerPath');
 var backgroundCircle = document.querySelector('#backgroundCircle')
 var newCard = document.querySelector('#pastActivitiesPage');
@@ -162,17 +159,6 @@ function startToComplete() {
   buttonLog.classList.remove('invisibility');
 }
 
- function pressLog() {
-   changeCircleColor(currentActivity.category);
-   startTimer.addEventListener('click', starter);
-   clockTime.classList.add('min');
-   clockTime.classList.remove('inspiration');
-   buttonLog.classList.add('invisibility');
-   buttonStartText.innerText = 'START'
-   saveActivities()
-   logTheActivity();
-}
-
 function showMessage() {
   var category = categoryButtonFinder();
   var color = '';
@@ -197,6 +183,7 @@ function pressLog() {
   changeElements();
   saveActivities();
   logTheActivity();
+  startButton.innerText = 'START';
 }
 
 function changeElements() {
