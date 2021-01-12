@@ -249,7 +249,7 @@ border: 2px solid #FFF;
   border: none;
   margin: 0;
   padding-top: 0px;
-  font-size: 125%;
+  font-size: 200%;
   font-weight: bolder;
   transform: scaleY(1.1);
 }
@@ -257,6 +257,7 @@ border: 2px solid #FFF;
 .timer {
   box-sizing: border-box;
   display: flex;
+  text-align: center;
   flex-direction: column;
   background-color: #46424D;
   position: relative;
@@ -317,7 +318,7 @@ border: 2px solid #FFF;
 
 .inner-circle {
   position: absolute;
-  height: 112%;
+  height: 113%;
   width: 100%;
   top: 0;
   display: flex;
@@ -484,7 +485,7 @@ border: 2px solid #FFF;
 
 @media screen and (max-width: 1440px) {
   .inner-circle {
-    height: 116%;
+    height: 116.5%;
   }
 
   .new-activity-form {

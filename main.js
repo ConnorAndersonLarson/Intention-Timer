@@ -34,7 +34,6 @@ var newCard = document.querySelector('#pastActivitiesPage');
 var noLog = document.querySelector('#noLog');
 var startTimer = document.querySelector('#circleText');
 var buttonLog = document.querySelector('#logActivity');
-var clockNumbers = document.querySelector('#clockTime');
 var startButton = document.querySelector("#startButtonText");
 var allInputs = document.querySelectorAll('input');
 
@@ -162,8 +161,8 @@ function startToComplete() {
  function pressLog() {
    changeCircleColor(currentActivity.category);
    startTimer.addEventListener('click', starter);
-   clockNumbers.classList.add('min');
-   clockNumbers.classList.remove('inspiration');
+   clockTime.classList.add('min');
+   clockTime.classList.remove('inspiration');
    buttonLog.classList.add('invisibility');
    buttonStartText.innerText = 'START'
    saveActivities()
@@ -180,9 +179,9 @@ function showMessage() {
   } else if (category === 'Exercise') {
     color = 'orange';
   }
-  clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
-  clockNumbers.classList.remove('min');
-  clockNumbers.classList.add('inspiration');
+  clockTime.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clockTime.classList.remove('min');
+  clockTime.classList.add('inspiration');
   startTimer.addEventListener('click', starter);
 }
 
