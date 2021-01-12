@@ -19,6 +19,7 @@ h2 {
 }
 
 h4 {
+  font-size: 90%;
   margin: 10px;
   color: #EFB7EC;
 }
@@ -129,10 +130,18 @@ border: 2px solid #FFF;
   width: 40%;
 }
 
+.start-activity-style {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+  width: 100%;
+  height: 8%;
+}
+
 .start-activity {
-  align-self: flex-end;
-  width: 30%;
-  height: 7%;
+  align-self: center;
+  width: 32%;
+  height: 40px;
   border-radius: 3px;
   border: none;
   background-color: #FFF;
@@ -140,7 +149,6 @@ border: 2px solid #FFF;
   font-size: 15px;
   outline: none;
 }
-
 
 .accomplish, .category {
   color: #FFF;
@@ -313,7 +321,7 @@ border: 2px solid #FFF;
 
 .inner-circle {
   position: absolute;
-  height: 115%;
+  height: 112%;
   width: 100%;
   top: 0;
   display: flex;
@@ -480,12 +488,17 @@ border: 2px solid #FFF;
 
 @media screen and (max-width: 1440px) {
   .inner-circle {
-    height: 117%;
+    height: 116%;
   }
 
   .new-activity-form {
     height: 86.5%;
-    max-height: 608px
+    max-height: 608px;
+  }
+
+  .form {
+    height: 86.5%;
+    max-height: 608px;
   }
 
   .timer {
@@ -496,10 +509,10 @@ border: 2px solid #FFF;
 
 @media screen and (min-height: 1000px) {
   .inner-circle {
-    height: 109%;
+    height: 108%;
   }
 
   .timer {
-    height: 74.8%;
+    height: 74.75%;
   }
 }
