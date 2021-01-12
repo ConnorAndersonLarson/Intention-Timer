@@ -116,10 +116,10 @@ function catSelectionError(pressedButton) {
 }
 
 function showActivity() {
-var userCategory = categoryButtonFinder();
-var userDescription = userAccomplish.value;
-var userMinutes = minutes.value;
-var userSeconds = seconds.value;
+  var userCategory = categoryButtonFinder();
+  var userDescription = userAccomplish.value;
+  var userMinutes = minutes.value;
+  var userSeconds = seconds.value;
   if (userCategory && userDescription && userMinutes && userSeconds) {
     currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
     changeCircleColor(currentActivity.category);
