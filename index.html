@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-US" dir="ltr">
   <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+      rel="stylesheet">
     <link href="styles.css" type="text/css" rel="stylesheet">
     <title>Intention Timer</title>
   </head>
@@ -16,67 +17,80 @@
         <section id="activityForm" class="form">
           <label class="category"><h3>Select a category:</h3></label>
           <div class="button-box">
-            <button id="study" class="study"><img class="study-active hidden" src="./assets/study-active.svg"><img class="study-image"src="./assets/study.svg">Study</button>
-            <button id="meditate" class="meditate"><img class="meditate-active hidden" src="./assets/meditate-active.svg"><img class="meditate-image" src="./assets/meditate.svg">Meditate</button>
-            <button id="exercise" class="exercise"><img class="exercise-active hidden" src="./assets/exercise-active.svg"><img class="exercise-image" src="./assets/exercise.svg">Exercise</button>
+            <button id="study" class="study">
+              <img class="study-active hidden" src="./assets/study-active.svg" alt="Study Selected">
+              <img class="study-image"src="./assets/study.svg" alt="">Study
+            </button>
+            <button id="meditate" class="meditate">
+              <img class="meditate-active hidden" src="./assets/meditate-active.svg" alt="Meditate Selected">
+              <img class="meditate-image" src="./assets/meditate.svg" alt="">Meditate
+            </button>
+            <button id="exercise" class="exercise">
+              <img class="exercise-active hidden" src="./assets/exercise-active.svg" alt="Exercise Selected">
+              <img class="exercise-image" src="./assets/exercise.svg" alt="">Exercise
+            </button>
           </div>
           <section class="error invisibility" id="buttonError">
-            <img class="error-image" src="./assets/warning.svg">
+            <img class="error-image" src="./assets/warning.svg" alt="Warning Error Select Activity Icon">
             <h4>Please select a category.</h4>
           </section>
-          <label class="accomplish">What would you like to accomplish during this time?</label>
-          <input id="accomplish" class="user-accomplish" type="text">
+          <label class="accomplish">What would you like to accomplish during this time?
+          </label>
+          <input id="accomplish" class="user-accomplish" type="text" alt="Enter Activity Description">
           <section class="error invisibility" id="accomplishError">
-            <img class="error-image" src="./assets/warning.svg">
+            <img class="error-image" src="./assets/warning.svg" alt="Warning Error Enter Text">
             <h4>A description is required.</h4>
           </section>
-          <div class="time-box">
-            <div class="minute-box">
+          <section class="time-box">
+            <section class="minute-box">
               <label>Minutes</label>
-              <input id="minutes" class="user-minutes" type="text">
+              <input id="minutes" class="user-minutes" type="text" alt="Enter Activity Minutes">
               <section class="error invisibility" id="minutesError">
-                <img class="error-image" src="./assets/warning.svg">
+                <img class="error-image" src="./assets/warning.svg" alt="Warning Error Enter Minutes Value">
                 <h4>Please input a numerical value.</h4>
               </section>
-            </div>
-            <div class="seconds-box">
+            </section>
+            <section class="seconds-box">
               <label>Seconds</label>
-              <input id="seconds" class="user-seconds" type="text">
+              <input id="seconds" class="user-seconds" type="text" alt="Enter Activity Seconds Here">
               <section class="error invisibility" id="secondsError">
-                <img class="error-image" src="./assets/warning.svg">
+                <img class="error-image" src="./assets/warning.svg" alt="Warning Error Enter Seconds Value">
                 <h4>Please input a numerical value.</h4>
               </section>
+            </section>
+          </section>
+            <div class="start-activity-style">
+              <button id="start" class="start-activity" alt="">START ACTIVITY</button>
             </div>
-          </div>
-          <button id="start" class="start-activity">START ACTIVITY</button>
         </section>
-        <div id="clockForm" class ="clock-visual hidden">
-          <div class="timer">
+        <section id="clockForm" class ="clock-visual hidden">
+          <section class="timer">
             <p id="clockAccomp" class="accomp">${accomp}</p>
             <p id="clockTime" class="min">${min}:${sec}</p>
-            <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> -->
+            <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <g class="base-timer-circle">
                 <circle class="timer-meditate hidden" cx="50" cy="50" r="35" />
                 <circle class="timer-study hidden" cx="50" cy="50" r="35" />
                 <circle class="timer-exercise hidden" cx="50" cy="50" r="35" />
               </g>
             </svg>
-            <span id="circleText" class="inner-circle">
+            <span id="circleText" class="inner-circle" alt="Start Timer">
               <p id="startButtonText">START</p>
             </span>
             <div class="log-box">
-              <button id="logActivity" class="log invisibility">LOG ACTIVITY</button>
+              <button id="logActivity" class="log invisibility" alt="">LOG ACTIVITY</button>
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
         <section id="activateNew" class="new-activity-form hidden">
-            <button id="newActivityButton" class="new-activity-button">CREATE A NEW ACTIVITY</button>
+            <button id="newActivityButton" class="new-activity-button" alt"">CREATE A NEW ACTIVITY
+            </button>
         </section>
       </section>
       <aside class="past-activities">
         <h2>Past Activities</h2>
         <section id="pastActivitiesPage" class="past-activities-box ">
-          <section id="noLog">
+          <section id="noLog" class="not-logged">
             <p>You haven't logged any activities yet.</p>
             <p>Complete the form to the left to get started!</p>
           </section>
