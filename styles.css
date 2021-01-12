@@ -198,7 +198,7 @@ border: 2px solid #FFF;
 
 .new-activity-form {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   background-color: #46424D;
   position: relative;
   height: 80%;
@@ -212,13 +212,13 @@ border: 2px solid #FFF;
 .new-activity-button {
   align-self: bottom;
   margin-top: 100px;
-  width: 300px;
-  height: 35px;
+  width: 40%;
+  height: 6%;
   border-radius: 3px;
   border: none;
   background-color: #FFF;
   color: #46424D;
-  font-size: 15px;
+  font-size: 120%;
   transform: scaleY(1.1);
   outline: none;
 }
