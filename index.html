@@ -69,9 +69,15 @@
             <p id="clockTime" class="min">${min}:${sec}</p>
             <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <g class="base-timer-circle">
-                <circle class="timer-meditate hidden" cx="50" cy="50" r="35" />
-                <circle class="timer-study hidden" cx="50" cy="50" r="35" />
-                <circle class="timer-exercise hidden" cx="50" cy="50" r="35" />
+                <circle id="backgroundCircle" class="timer-base hidden" cx="50" cy="50" r="35" />
+                <path id="baseTimerPath" stroke-dasharray="220" class="base-timer-path hidden"
+                  d="
+                    M 50, 50
+                    m -35, 0
+                    a 35, 35 0 1, 0 70, 0
+                    a 35, 35 0 1, 0 -70, 0
+                    "
+                ></path>
               </g>
             </svg>
             <span id="circleText" class="inner-circle" alt="Start Timer">
