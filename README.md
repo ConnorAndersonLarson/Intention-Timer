@@ -2,9 +2,13 @@
 
 ## Contributors
 
-* Connor Anderson-Larson
-* Jim Charnesky
-* Joel Thomas
+* [Connor Anderson-Larson](https://github.com/ConnorAndersonLarson)
+* [Jim Charnesky](https://github.com/BigBike96)
+* [Joel Thomas](https://github.com/Shakikka)
+
+## Reviewers
+
+* [Erik Konner](https://github.com/ehk9000)
 
 ## Technologies Used:
 
@@ -14,7 +18,7 @@
 
 ## Deploy Link:
 
-* [Intention Timer](https://connorandersonlarson.github.io/Intention-Timer/)
+* [Click here to open Intention Timer website](https://connorandersonlarson.github.io/Intention-Timer/)
 
 ## How to Use:
 
