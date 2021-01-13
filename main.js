@@ -1,15 +1,19 @@
+var currentActivity = '';
+var previousActivities = [];
+
 var buttonStudy = document.querySelector('#study');
 var buttonMeditate = document.querySelector('#meditate');
 var buttonExercise = document.querySelector('#exercise');
 var buttonLog = document.querySelector('#logActivity');
 var buttonNewActivity = document.querySelector('#newActivityButton');
 var buttonStart = document.querySelector('#start');
-var imageStudy = document.querySelector('.study-image');
-var imageMeditate = document.querySelector('.meditate-image');
-var imageExercise = document.querySelector('.exercise-image');
-var imageStudyActive = document.querySelector('.study-active');
-var imageMeditateActive = document.querySelector('.meditate-active');
-var imageExerciseActive = document.querySelector('.exercise-active');
+var buttonStartText = document.querySelector("#startButtonText");
+var imageStudy = document.querySelector('#studyImage');
+var imageMeditate = document.querySelector('#meditateImage');
+var imageExercise = document.querySelector('#exerciseImage');
+var imageStudyActive = document.querySelector('#studyActive');
+var imageMeditateActive = document.querySelector('#meditateActive');
+var imageExerciseActive = document.querySelector('#exerciseActive');
 var userAccomplish = document.querySelector('#accomplish');
 var seconds = document.querySelector('#seconds');
 var minutes = document.querySelector('#minutes');
@@ -20,18 +24,19 @@ var categoryError = document.querySelector('#buttonError');
 var minError = document.querySelector('#minutesError');
 var secError = document.querySelector('#secondsError');
 var accompError = document.querySelector('#accomplishError');
-var categoryButtons = document.querySelector('.button-box');
+var categoryButtons = document.querySelector('#buttonBox');
 var clockTime = document.querySelector('#clockTime');
 var clockAccomp = document.querySelector('#clockAccomp');
-var circlePurple = document.querySelector('.timer-meditate');
-var circleOrange = document.querySelector('.timer-exercise');
-var circleGreen = document.querySelector('.timer-study');
+var circleTime = document.querySelector('#baseTimerPath');
+var backgroundCircle = document.querySelector('#backgroundCircle')
 var newCard = document.querySelector('#pastActivitiesPage');
 var noLog = document.querySelector('#noLog');
-var startTimer = document.querySelector('#circleText')
-var buttonLog = document.querySelector('#logActivity')
-var clockNumbers = document.querySelector('#clockTime')
+var startTimer = document.querySelector('#circleText');
+var buttonLog = document.querySelector('#logActivity');
+var startButton = document.querySelector("#startButtonText");
+var allInputs = document.querySelectorAll('input');
 
+window.addEventListener('load', loadActivities);
 seconds.addEventListener('blur', secondsError);
 minutes.addEventListener('blur', minuteError);
 userAccomplish.addEventListener('blur', accomplishError);
@@ -43,164 +48,16 @@ buttonStart.addEventListener('click', showActivity);
 startTimer.addEventListener('click', starter);
 buttonLog.addEventListener('click', pressLog);
 buttonNewActivity.addEventListener('click', goHome);
-window.addEventListener('load',loadActivities)
-
-var currentActivity = '';
-var previousActivities = [];
-
-function saveActivities() {
-  currentActivity.saveToStorage()
-  previousActivities.push(currentActivity.id)
-  var activityIDs = JSON.stringify(previousActivities)
-  localStorage.setItem('yourPastActivities', activityIDs);
-}
 
 function loadActivities() {
   if (localStorage.getItem('yourPastActivities') != null) {
     previousActivities = JSON.parse(localStorage.getItem('yourPastActivities'))
     for (var i = 0; i < previousActivities.length; i++) {
       currentActivity = JSON.parse(localStorage.getItem(previousActivities[i]));
-      addCard()
+      addCard();
     }
     hide([document.querySelector('#noLog')]);
-    currentActivity = ''
-  }
-}
-
- function pressLog() {
-   changeCircleColor(currentActivity.category);
-   startTimer.addEventListener('click', starter);
-   clockNumbers.classList.add('min');
-   clockNumbers.classList.remove('inspiration');
-   buttonLog.classList.add('invisibility');
-   saveActivities()
-   logTheActivity();
-}
-
-function showMessage() {
-  var category = categoryButtonFinder();
-  var color = '';
-  if(category === 'Study') {
-    color = 'green';
-  } else if (category === 'Meditate') {
-    color = 'purple';
-  } else if (category === 'Exercise') {
-    color = 'orange';
-  }
-  clockNumbers.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
-  clockNumbers.classList.remove('min');
-  clockNumbers.classList.add('inspiration')
-  startTimer.addEventListener('click', starter);
-}
-
-function getRandomMessage(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function startToComplete() {
-  var startButton = document.querySelector("#startButtonText");
-  startButton.innerText = 'COMPLETE!';
-}
-
-function hide(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.add('hidden');
-  }
-}
-
-function show(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.remove('hidden');
-  }
-}
-
-function toggle(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.toggle('hidden');
-  }
-}
-
-function goHome() {
-  hide([buttonNewActivity, formNewActivity]);
-  show([form]);
-}
-
-function starter() {
-currentActivity.countdown();
-}
-
-function clearInputs() {
-  var allInputs = document.querySelectorAll('input');
-  for (var i = 0; i < allInputs.length; i++) {
-    allInputs[i].value = ""
-    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
-    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
-    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
-  }
-}
-
-function addCard() {
-  newCard.innerHTML += `
-  <section id="pastActivitiesCard" class="new-card">
-    <section class="new-card-text-box">
-        <section class="text-box-baby">
-          <g class="card-category">${currentActivity.category}</g>
-          <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
-        </section>
-      <g class="card-accomp">${currentActivity.description}</g>
-    </section>
-    <section id="card-color" class="card-color-container">
-      <section id="box1" class="card-color-tag-${currentActivity.category.toLowerCase()}">
-      </section>
-    </section>
-  </section>
-  `;
-}
-
-function logTheActivity() {
-  if (!noLog.classList.contains('hidden')) {
-    hide([noLog]);
-  }
-    hide([clockForm])
-    show([formNewActivity, buttonNewActivity]);
-    addCard();
-    clearInputs();
-
-function starter() {
-  currentActivity.countdown();
-  }
-}
-
-function clock(accomp, min, sec) {
-  show([clockForm]);
-  clockTime.innerText = `${min}:${sec}`;
-  clockAccomp.innerText = `${accomp}`;
-}
-
-
-function changeCircleColor(userCategory) {
-  if (userCategory === 'Exercise') {
-    toggle([circleOrange]);
-  } else if (userCategory === 'Study') {
-    toggle([circleGreen]);
-  } else if (userCategory === 'Meditate') {
-    toggle([circlePurple]);
-  }
-}
-
-
-function showActivity() {
-var userCategory = categoryButtonFinder();
-var userDescription = userAccomplish.value;
-var userMinutes = minutes.value;
-var userSeconds = seconds.value;
-  if (userCategory && userDescription && userMinutes && userSeconds) {
-    hide([form]);
-    currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
-    clock(userDescription, userMinutes, userSeconds);
-    changeCircleColor(currentActivity.category);
-  } else {
-    buttonError();
+    currentActivity = '';
   }
 }
 
@@ -250,6 +107,138 @@ function unselectButtons(selector1, selector2, border, color) {
   }
 }
 
+function catSelectionError(pressedButton) {
+  if (pressedButton === undefined || pressedButton.classList[1] === undefined) {
+    categoryError.classList.remove('invisibility');
+  } else if (!categoryError.classList.contains('invisibility')) {
+    categoryError.classList.add('invisibility');
+  }
+}
+
+function showActivity() {
+  var userCategory = categoryButtonFinder();
+  var userDescription = userAccomplish.value;
+  var userMinutes = minutes.value;
+  var userSeconds = seconds.value;
+  if (userCategory && userDescription && userMinutes && userSeconds) {
+    currentActivity = new Activity(userCategory, userDescription, userMinutes, userSeconds)
+    changeCircleColor(currentActivity.category);
+    toggle([backgroundCircle]);
+    toggle([circleTime]);
+    clock(userDescription, userMinutes, userSeconds);
+    hide([form]);
+  } else {
+    buttonError();
+  }
+}
+
+function clock(accomp, min, sec) {
+  show([clockForm]);
+  clockTime.innerText = `${min}:${sec}`;
+  clockAccomp.innerText = `${accomp}`;
+}
+
+function changeCircleColor(userCategory) {
+  if (userCategory === 'Exercise') {
+    circleTime.classList.toggle('timer-exercise');
+  } else if (userCategory === 'Study') {
+    circleTime.classList.toggle('timer-study');
+  } else if (userCategory === 'Meditate') {
+    circleTime.classList.toggle('timer-meditate');
+  }
+}
+
+function starter() {
+  startTimer.removeEventListener('click', starter);
+  currentActivity.countdown();
+  startButton.innerText = '';
+}
+
+function startToComplete() {
+  startButton.innerText = 'COMPLETE!';
+  showMessage();
+  buttonLog.classList.remove('invisibility');
+}
+
+function showMessage() {
+  var category = categoryButtonFinder();
+  var color = '';
+  if(category === 'Study') {
+    color = 'green';
+  } else if (category === 'Meditate') {
+    color = 'purple';
+  } else if (category === 'Exercise') {
+    color = 'orange';
+  }
+  clockTime.innerHTML= `<section class="message ${color}"> <h5>${messages[getRandomMessage(messages)]}</h5> </section>`;
+  clockTime.classList.remove('min');
+  clockTime.classList.add('inspiration');
+}
+
+function getRandomMessage(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function pressLog() {
+  changeCircleColor(currentActivity.category);
+  changeElements();
+  saveActivities();
+  logTheActivity();
+  startButton.innerText = 'START';
+}
+
+function changeElements() {
+  startTimer.addEventListener('click', starter);
+  clockTime.classList.add('min');
+  clockTime.classList.remove('inspiration');
+  buttonLog.classList.add('invisibility');
+  circleTime.classList.toggle('hidden');
+  backgroundCircle.classList.toggle('hidden');
+}
+
+function saveActivities() {
+  currentActivity.saveToStorage();
+  previousActivities.push(currentActivity.id);
+  var activityIDs = JSON.stringify(previousActivities);
+  localStorage.setItem('yourPastActivities', activityIDs);
+}
+
+function logTheActivity() {
+  if (!noLog.classList.contains('hidden')) {
+    hide([noLog]);
+  }
+    hide([clockForm]);
+    show([formNewActivity, buttonNewActivity]);
+    addCard();
+    clearInputs();
+}
+
+function addCard() {
+  newCard.innerHTML += `
+  <section id="pastActivitiesCard" class="new-card">
+    <section class="new-card-text-box">
+        <section class="text-box-baby">
+          <g class="card-category">${currentActivity.category}</g>
+          <g class="card-time">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</g>
+        </section>
+      <g class="card-accomp">${currentActivity.description}</g>
+    </section>
+    <section id="card-color" class="card-color-container">
+      <section id="box1" class="card-color-tag-${currentActivity.category.toLowerCase()}">
+      </section>
+    </section>
+  </section>
+  `;
+}
+
+function clearInputs() {
+  for (var i = 0; i < allInputs.length; i++) {
+    allInputs[i].value = "";
+    unselectButtons(imageStudy, imageStudyActive, buttonStudy, 'green');
+    unselectButtons(imageMeditate, imageMeditateActive, buttonMeditate, 'purple');
+    unselectButtons(imageExercise, imageExerciseActive, buttonExercise, 'orange');
+  }
+}
 
 function buttonError() {
   buttonStart.classList.toggle('backgroundColor');
@@ -273,19 +262,17 @@ function accomplishError() {
   accomplishErrorCheck(userAccomplish, accompError);
 }
 
-function catSelectionError(pressedButton) {
-  var button = pressedButton;
-  if (button === undefined || button.classList[1] === undefined) {
-    categoryError.classList.remove('invisibility');
-  } else if (!categoryError.classList.contains('invisibility')) {
-    categoryError.classList.add('invisibility');
-  }
-
-}
-
 function activityFormError() {
   if (buttonExercise.classList[1] === undefined && buttonStudy.classList[1] === undefined && buttonMeditate.classList[1] === undefined) {
     categoryError.classList.remove('invisibility');
+  }
+}
+
+function accomplishErrorCheck(inputField, errorMessage) {
+  if (inputField.value === '') {
+    errorMessage.classList.remove('invisibility');
+  } else if (inputField.value !== '') {
+    errorMessage.classList.add('invisibility');
   }
 }
 
@@ -313,10 +300,25 @@ function secondsCalc() {
   errorCheck(minutes, minError);
 }
 
-function accomplishErrorCheck(inputField, errorMessage) {
-  if (inputField.value === '') {
-    errorMessage.classList.remove('invisibility');
-  } else if (inputField.value !== '') {
-    errorMessage.classList.add('invisibility');
+function hide(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('hidden');
   }
+}
+
+function show(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('hidden');
+  }
+}
+
+function toggle(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.toggle('hidden');
+  }
+}
+
+function goHome() {
+  hide([buttonNewActivity, formNewActivity]);
+  show([form]);
 }
