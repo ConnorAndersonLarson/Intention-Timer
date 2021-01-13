@@ -12,7 +12,6 @@ class Activity {
     this.remainingTime = this.timeLimit;
   }
 
-
   formatClock() {
     var minutes = Math.floor(this.remainingTime / 60);
     var seconds = this.remainingTime % 60;
@@ -31,10 +30,10 @@ class Activity {
         that.stopwatch += 1;
         that.remainingTime = that.timeLimit - that.stopwatch;
         clockTime.innerText = that.formatClock();
-        that.circleCountdown(220)
+        that.circleCountdown(220);
         if (that.stopwatch > that.timeLimit) {
           clearInterval(interval);
-          that.circleCountUp()
+          that.circleCountUp();
           clockTime.innerText = '00:00';
           that.markComplete();
           startToComplete();
@@ -49,18 +48,18 @@ class Activity {
 
   circleCountUp() {
     var that = this;
-    var timehold = this.stopwatch
-    var limitHold = this.timeLimit
+    var timehold = this.stopwatch;
+    var limitHold = this.timeLimit;
     var circleInterval = setInterval(function() {
       that.stopwatch -= 1;
       that.remainingTime = that.timeLimit - that.stopwatch;
-      that.circleCountdown(73.3)
+      that.circleCountdown(73.3);
       if (that.stopwatch === 0) {
         clearInterval(circleInterval);
         this.stopwatch = timehold;
-        this.timeLimit = limitHold
+        this.timeLimit = limitHold;
       }
-    }, 100)
+    }, 100);
   }
 
   markComplete() {
@@ -71,6 +70,5 @@ class Activity {
     var savedActivity = JSON.stringify(this);
     localStorage.setItem(this.id, savedActivity);
   }
-
 
 }
